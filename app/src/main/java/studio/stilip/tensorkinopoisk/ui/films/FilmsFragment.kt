@@ -5,30 +5,34 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import studio.stilip.tensorkinopoisk.R
 import studio.stilip.tensorkinopoisk.databinding.FragmentFilmsBinding
+import studio.stilip.tensorkinopoisk.domain.entities.films.Film
 
-class FilmsFragment : Fragment() {
+class FilmsFragment : Fragment(R.layout.fragment_films) {
 
-    private var _binding: FragmentFilmsBinding? = null
+    private lateinit var binding: FragmentFilmsBinding
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentFilmsBinding.bind(view)
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+        val filmsAdapter = FilmsAdapter{film ->  }
 
-        _binding = FragmentFilmsBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        binding.recFilms.apply {
+            layoutManager = GridLayoutManager(this@FilmsFragment.context,2)
+            adapter = filmsAdapter
+        }
 
-        return root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        filmsAdapter.setList(
+            listOf(Film(1,"Кино","","боевик"),
+                Film(1,"AAAAAAAAAAAAA AAAAAAAAA","","боевик"),
+                Film(1,"Кино","","боевик"),
+                Film(1,"Кино","","боевик"),
+                Film(1,"AAAAAAAAAAAAA AAAAAAAAA","","боевик"),
+                Film(1,"Кино","","боевик"),)
+        )
     }
 }

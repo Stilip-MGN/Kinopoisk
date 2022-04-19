@@ -7,4 +7,6 @@
     <string name="series">Сериалы</string>
     <string name="favorite">Избранное</string>
     <string name="film_name">Название фильма</string>
+    <string name="description">Описание:</string>
+    <string name="year_released">Год выхода:</string>
 </resources>

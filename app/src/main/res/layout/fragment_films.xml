@@ -33,8 +33,9 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rec_workers"
-        android:layout_width="0dp"
+        android:gravity="center"
+        android:id="@+id/rec_films"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
         app:layout_constrainedHeight="true"
