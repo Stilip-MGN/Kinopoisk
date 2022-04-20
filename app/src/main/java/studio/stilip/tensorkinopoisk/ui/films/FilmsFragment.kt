@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.tinkoff_hr.utils.ui.Dp
+import com.example.tinkoff_hr.utils.ui.PaddingItemDecoration
+import com.example.tinkoff_hr.utils.ui.dpToPx
 import studio.stilip.tensorkinopoisk.R
 import studio.stilip.tensorkinopoisk.databinding.FragmentFilmsBinding
 import studio.stilip.tensorkinopoisk.domain.entities.films.Film
@@ -19,20 +22,37 @@ class FilmsFragment : Fragment(R.layout.fragment_films) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentFilmsBinding.bind(view)
 
-        val filmsAdapter = FilmsAdapter{film ->  }
+        val filmsAdapter = FilmsAdapter { film -> }
 
         binding.recFilms.apply {
-            layoutManager = GridLayoutManager(this@FilmsFragment.context,2)
+            layoutManager = GridLayoutManager(this@FilmsFragment.context, 2)
             adapter = filmsAdapter
+
         }
 
-        filmsAdapter.setList(
-            listOf(Film("1","Кино","","боевик"),
-                Film("1","AAAAAAAAAAAAA AAAAAAAAA","","боевик"),
-                Film("1","Кино","","боевик"),
-                Film("1","Кино","","боевик"),
-                Film("1","AAAAAAAAAAAAA AAAAAAAAA","","боевик"),
-                Film("1","Кино","","боевик"),)
+        binding.recFilms.addItemDecoration(
+            PaddingItemDecoration(
+                bottom = requireContext().dpToPx(EDUCATION_LIST_BOTTOM_PADDING),
+                filter = { holder ->
+
+                    holder.adapterPosition == filmsAdapter.itemCount - 1
+                })
         )
+
+        filmsAdapter.setList(
+            listOf(
+                Film("1", "Кино", "", "боевик"),
+                Film("1", "AAAAAAAAAAAAA AAAAAAAAA", "", "боевик"),
+                Film("1", "Кино", "", "боевик"),
+                Film("1", "Кино", "", "боевик"),
+                Film("1", "AAAAAAAAAAAAA AAAAAAAAA", "", "боевик"),
+                Film("1", "Кино", "", "боевик"),
+            )
+        )
+    }
+
+    private companion object {
+        @Dp
+        const val EDUCATION_LIST_BOTTOM_PADDING = 90F
     }
 }
