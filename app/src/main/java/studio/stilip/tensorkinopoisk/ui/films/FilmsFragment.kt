@@ -27,12 +27,12 @@ class FilmsFragment : Fragment(R.layout.fragment_films) {
         }
 
         filmsAdapter.setList(
-            listOf(Film(1,"Кино","","боевик"),
-                Film(1,"AAAAAAAAAAAAA AAAAAAAAA","","боевик"),
-                Film(1,"Кино","","боевик"),
-                Film(1,"Кино","","боевик"),
-                Film(1,"AAAAAAAAAAAAA AAAAAAAAA","","боевик"),
-                Film(1,"Кино","","боевик"),)
+            listOf(Film("1","Кино","","боевик"),
+                Film("1","AAAAAAAAAAAAA AAAAAAAAA","","боевик"),
+                Film("1","Кино","","боевик"),
+                Film("1","Кино","","боевик"),
+                Film("1","AAAAAAAAAAAAA AAAAAAAAA","","боевик"),
+                Film("1","Кино","","боевик"),)
         )
     }
 }
