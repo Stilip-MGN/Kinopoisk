@@ -7,6 +7,10 @@ plugins {
 android {
     compileSdk 31
 
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
     defaultConfig {
         applicationId "studio.stilip.tensorkinopoisk"
         minSdk 21
@@ -35,11 +39,18 @@ android {
     }
 }
 
+
+
 dependencies {
 
+    implementation 'com.github.moxy-community:moxy:2.2.2'
+    kapt 'com.github.moxy-community:moxy-compiler:2.2.2'
+    implementation 'com.github.moxy-community:moxy-android:2.2.2'
+    implementation 'com.github.moxy-community:moxy-app-compat:2.2.2'
+
     //Dagger2
-    implementation 'com.google.dagger:dagger:2.39'
-    kapt 'com.google.dagger:dagger-compiler:2.39'
+    implementation 'com.google.dagger:dagger:2.41'
+    kapt 'com.google.dagger:dagger-compiler:2.41'
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
