@@ -1,11 +1,10 @@
-package com.example.tinkoff_hr.base
+package studio.stilip.tensorkinopoisk.base
 
-/*import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import moxy.MvpPresenter
 
-open class BasePresenter<V : BaseView>  : MvpPresenter<V>()
-{
+open class BasePresenter<V : BaseView> : MvpPresenter<V>() {
 
     private val compositeDisposable = CompositeDisposable()
 
@@ -20,4 +19,4 @@ open class BasePresenter<V : BaseView>  : MvpPresenter<V>()
         compositeDisposable.dispose()
         super.onDestroy()
     }
-}*/
+}
