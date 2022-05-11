@@ -22,6 +22,9 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField "String", "API_TOKEN", "\"CK8P20A-T6N4XPV-JSD67GF-6NKR399\""
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -85,4 +88,7 @@ dependencies {
     //Dagger2
     implementation 'com.google.dagger:dagger:2.41'
     kapt 'com.google.dagger:dagger-compiler:2.41'
+
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.13.0'
 }

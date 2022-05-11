@@ -11,6 +11,7 @@
     <color name="orange_dark">#E85020</color>
     <color name="kino_black">#1F1F1F</color>
     <color name="green">#4CAF50</color>
-    <color name="yellow">#FFEB3B</color>
+    <color name="yellow">#ECD931</color>
     <color name="red">#F44336</color>
+    <color name="grey">#939393</color>
 </resources>

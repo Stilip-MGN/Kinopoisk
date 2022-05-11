@@ -3,7 +3,10 @@ package studio.stilip.tensorkinopoisk.ui.films
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import studio.stilip.tensorkinopoisk.R
 import studio.stilip.tensorkinopoisk.databinding.CardFilmBinding
 import studio.stilip.tensorkinopoisk.domain.entities.films.Film
 
@@ -22,10 +25,27 @@ class FilmsAdapter(private val clickListener: (Film) -> Unit) :
 
     override fun onBindViewHolder(holder: FilmsHolder, position: Int) {
         val item = films[position]
+
         with(holder.viewBinding) {
             title.text = item.title
-            genre.text = item.genre
+            year.text = if (item.year != 0) item.year.toString() else ""
+
+
+            rating.text = item.rating.toString()
+
+            when {
+                item.rating > 7 -> rating.setBackgroundColor(ContextCompat.getColor(rating.context, R.color.green))
+                item.rating > 4 -> rating.setBackgroundColor(ContextCompat.getColor(rating.context, R.color.yellow))
+                else -> rating.setBackgroundColor(ContextCompat.getColor(rating.context, R.color.red))
+            }
+
+            Glide.with(poster.context)
+                .load(item.poster)
+                .centerCrop()
+                .into(poster)
         }
+
+
 
         holder.itemView.setOnClickListener {
             clickListener.invoke(item)

@@ -20,5 +20,4 @@ class RetrofitProvider @Inject constructor() {
         .build()
         .create(RetrofitServiceFilm::class.java)
 
-
 }

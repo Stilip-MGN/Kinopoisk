@@ -10,21 +10,16 @@ import javax.inject.Inject
 class FilmRepositoryImpl @Inject constructor(private val retrofitService: RetrofitServiceFilm) :
     FilmRepository {
 
-    private val films: List<Film> = listOf(
-        Film("1", "Мама", "https//", "ужас"),
-        Film("2", "Папа", "https//", "комедия"),
-    )
+    override fun getFilmsInfo(): Single<List<Film>> {
 
-    override fun getFilmsInfo(): List<Film> {
-
-        return films
-        TODO("Not yet implemented")
+        return retrofitService.getFilms()
+            .map { list ->
+                list.docs.map { m -> m.toDomain() }
+            }
     }
 
     override fun getFilmInfoById(id: String): Single<Film> {
         return retrofitService.getMovie().map { m -> m.toDomain() }
-        //return films.first { film -> film.id == id }
-        TODO("Not yet implemented")
     }
 
     override fun addFilmByIdToFavorite(id: String): Boolean {
