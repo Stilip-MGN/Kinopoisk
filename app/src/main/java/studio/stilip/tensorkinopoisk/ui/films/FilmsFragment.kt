@@ -1,28 +1,47 @@
 package studio.stilip.tensorkinopoisk.ui.films
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.utils.ui.Dp
 import com.example.tinkoff_hr.utils.ui.PaddingItemDecoration
 import com.example.tinkoff_hr.utils.ui.dpToPx
+import moxy.MvpAppCompatFragment
+import moxy.ktx.moxyPresenter
+import studio.stilip.tensorkinopoisk.App
 import studio.stilip.tensorkinopoisk.R
+import studio.stilip.tensorkinopoisk.data.api.RetrofitProvider
+import studio.stilip.tensorkinopoisk.data.api.RetrofitServiceFilm
+import studio.stilip.tensorkinopoisk.data.repositories.FilmRepositoryImpl
 import studio.stilip.tensorkinopoisk.databinding.FragmentFilmsBinding
 import studio.stilip.tensorkinopoisk.domain.entities.films.Film
+import studio.stilip.tensorkinopoisk.domain.usecases.GetFilmInfoByIdUseCase
+import studio.stilip.tensorkinopoisk.presentation.FilmsPresenter
+import studio.stilip.tensorkinopoisk.views.FilmView
+import timber.log.Timber
+import javax.inject.Inject
+import javax.inject.Provider
 
-class FilmsFragment : Fragment(R.layout.fragment_films) {
+class FilmsFragment : MvpAppCompatFragment(R.layout.fragment_films), FilmView {
 
     private lateinit var binding: FragmentFilmsBinding
+    private lateinit var filmsAdapter: FilmsAdapter
+
+    @Inject
+    lateinit var presenterProvider: Provider<FilmsPresenter>
+
+    val filmsPresenter: FilmsPresenter by moxyPresenter { presenterProvider.get() }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        App.appComponent.inject(this)
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         binding = FragmentFilmsBinding.bind(view)
 
-        val filmsAdapter = FilmsAdapter { film -> }
+        filmsAdapter = FilmsAdapter { film -> }
 
         binding.recFilms.apply {
             layoutManager = GridLayoutManager(this@FilmsFragment.context, 2)
@@ -39,20 +58,42 @@ class FilmsFragment : Fragment(R.layout.fragment_films) {
                 })
         )
 
-        filmsAdapter.setList(
-            listOf(
-                Film("1", "Кино", "", "боевик"),
-                Film("1", "AAAAAAAAAAAAA AAAAAAAAA", "", "боевик"),
-                Film("1", "Кино", "", "боевик"),
-                Film("1", "Кино", "", "боевик"),
-                Film("1", "AAAAAAAAAAAAA AAAAAAAAA", "", "боевик"),
-                Film("1", "Кино", "", "боевик"),
-            )
-        )
+        binding.textSearch.setEndIconOnClickListener {
+            filmsPresenter.getFilm()
+        }
+
+/* val retSer = RetrofitProvider().retrofitServiceFilm
+val filmRep = FilmRepositoryImpl(retSer)
+val usecase = GetFilmInfoByIdUseCase(filmRep)
+filmsPresenter = FilmsPresenter(usecase)
+
+filmsAdapter.setList(
+    lis(
+        Film("1", "Кино", "", "боевик"),
+        Film("1", "AAAAAAAAAAAAA AAAAAAAAA", "", "боевик"),
+        Film("1", "Кино", "", "боевик"),
+        Film("1", "Кино", "", "боевик"),
+        Film("1", "AAAAAAAAAAAAA AAAAAAAAA", "", "боевик"),
+        Film("1", "Кино", "", "боевик"),
+    )
+)*/
     }
 
     private companion object {
         @Dp
         const val EDUCATION_LIST_BOTTOM_PADDING = 90F
+    }
+
+    override fun showFilm(film: Film) {
+        filmsAdapter.setList(listOf(film))
+        Timber.e("film[" + film.title + " " + film.genre + "]")
+    }
+
+    override fun showError(message: String) {
+        Timber.e(message)
+    }
+
+    override fun showSuccess(message: String) {
+        TODO("Not yet implemented")
     }
 }
