@@ -59,7 +59,6 @@
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         tools:text="@tools:sample/full_names"
-
         android:layout_marginHorizontal="2dp"
         android:textSize="18sp"
         android:maxLines="2"/>

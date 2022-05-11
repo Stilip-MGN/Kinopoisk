@@ -1,8 +1,8 @@
 package studio.stilip.tensorkinopoisk.data.dto
 
-import studio.stilip.tensorkinopoisk.data.api.MovieResponse
 import studio.stilip.tensorkinopoisk.data.entities.FilmEntityForApi
 import studio.stilip.tensorkinopoisk.data.entities.FilmEntityForDB
+import studio.stilip.tensorkinopoisk.data.entities.FilmResponse
 import studio.stilip.tensorkinopoisk.domain.entities.films.Film
 import timber.log.Timber
 
@@ -32,7 +32,7 @@ fun FilmEntityForApi.toDomain():Film =
 
  */
 
-fun MovieResponse.toDomain(): Film {
+fun FilmResponse.toDomain(): Film {
 
     val rating =
         if (this.rating?.kp == 0.0) this.rating.imdb
