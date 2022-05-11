@@ -4,7 +4,7 @@ import io.reactivex.Single
 import studio.stilip.tensorkinopoisk.domain.entities.films.Film
 
 interface FilmRepository {
-    fun getFilmsInfo(): List<Film>
+    fun getFilmsInfo(): Single<List<Film>>
 
     fun getFilmInfoById(id:String): Single<Film>
 

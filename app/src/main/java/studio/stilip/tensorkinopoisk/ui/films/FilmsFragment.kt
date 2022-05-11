@@ -59,34 +59,18 @@ class FilmsFragment : MvpAppCompatFragment(R.layout.fragment_films), FilmView {
         )
 
         binding.textSearch.setEndIconOnClickListener {
-            filmsPresenter.getFilm()
+           // filmsPresenter.getFilms()
         }
 
-/* val retSer = RetrofitProvider().retrofitServiceFilm
-val filmRep = FilmRepositoryImpl(retSer)
-val usecase = GetFilmInfoByIdUseCase(filmRep)
-filmsPresenter = FilmsPresenter(usecase)
-
-filmsAdapter.setList(
-    lis(
-        Film("1", "Кино", "", "боевик"),
-        Film("1", "AAAAAAAAAAAAA AAAAAAAAA", "", "боевик"),
-        Film("1", "Кино", "", "боевик"),
-        Film("1", "Кино", "", "боевик"),
-        Film("1", "AAAAAAAAAAAAA AAAAAAAAA", "", "боевик"),
-        Film("1", "Кино", "", "боевик"),
-    )
-)*/
-    }
-
-    private companion object {
-        @Dp
-        const val EDUCATION_LIST_BOTTOM_PADDING = 90F
     }
 
     override fun showFilm(film: Film) {
         filmsAdapter.setList(listOf(film))
         Timber.e("film[" + film.title + " " + film.genre + "]")
+    }
+
+    override fun showFilms(list: List<Film>) {
+        filmsAdapter.setList(list)
     }
 
     override fun showError(message: String) {
@@ -95,5 +79,10 @@ filmsAdapter.setList(
 
     override fun showSuccess(message: String) {
         TODO("Not yet implemented")
+    }
+
+    private companion object {
+        @Dp
+        const val EDUCATION_LIST_BOTTOM_PADDING = 90F
     }
 }
