@@ -10,11 +10,6 @@ import javax.inject.Inject
 class FilmRepositoryImpl @Inject constructor(private val retrofitService: RetrofitServiceFilm) :
     FilmRepository {
 
-    private val films: List<Film> = listOf(
-        Film("1", "Мама", "https//", "ужас"),
-        Film("2", "Папа", "https//", "комедия"),
-    )
-
     override fun getFilmsInfo(): Single<List<Film>> {
 
         return retrofitService.getFilms()

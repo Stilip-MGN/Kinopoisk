@@ -28,7 +28,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/rating"
             android:background="@color/green"
             android:textColor="@color/white"
             android:layout_width="wrap_content"
@@ -55,7 +55,7 @@
 
     <TextView
         android:layout_gravity="center"
-        android:id="@+id/genre"
+        android:id="@+id/year"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         tools:text="@tools:sample/full_names"

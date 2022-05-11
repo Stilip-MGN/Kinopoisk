@@ -32,11 +32,21 @@ fun FilmEntityForApi.toDomain():Film =
 
  */
 
-fun MovieResponse.toDomain(): Film = Film(
-    id = this.id.toString(),
-    title = this.name ?: this.alternativeName ?: "",
-    poster = this.poster?.previewUrl ?: "",
-    genre = this.genres?.first()?.name ?: ""
-)
+fun MovieResponse.toDomain(): Film {
 
+    val rating =
+        if (this.rating?.kp == 0.0) this.rating.imdb
+        else this.rating?.kp
+            ?: this.rating?.tmdb
+            ?: 0.0
+
+    return Film(
+        id = this.id.toString(),
+        year = this.year ?: 0,
+        rating = rating,
+        title = this.name ?: this.alternativeName ?: "",
+        poster = this.poster?.previewUrl ?: "",
+        genre = this.genres?.first()?.name ?: ""
+    )
+}
 
