@@ -1,6 +1,6 @@
-package studio.stilip.tensorkinopoisk.domain.entities.films
+package studio.stilip.tensorkinopoisk.data.entities
 
-data class Film(
+class FilmEntityForDB(
     val id: String,
     val title: String,
     val poster: String,
