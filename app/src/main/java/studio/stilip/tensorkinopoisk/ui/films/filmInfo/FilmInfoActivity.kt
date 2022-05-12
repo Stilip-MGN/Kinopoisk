@@ -19,14 +19,16 @@ import javax.inject.Provider
 
 class FilmInfoActivity : MvpAppCompatActivity(), FilmInfoView {
 
-    private val binding: ActivityFilmInfoBinding by lazy {
-        ActivityFilmInfoBinding.inflate(layoutInflater)
-    }
-
     @Inject
     lateinit var presenterProvider: Provider<FilmInfoPresenter>
 
     val filmPresenter: FilmInfoPresenter by moxyPresenter { presenterProvider.get() }
+
+    private val binding: ActivityFilmInfoBinding by lazy {
+        ActivityFilmInfoBinding.inflate(layoutInflater)
+    }
+
+    private val filmId: String by lazy { intent.getStringExtra(EXTRA_FILM_ID)!! }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         App.appComponent.inject(this)
