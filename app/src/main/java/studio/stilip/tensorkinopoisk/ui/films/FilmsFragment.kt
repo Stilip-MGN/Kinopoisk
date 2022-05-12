@@ -52,7 +52,7 @@ class FilmsFragment : MvpAppCompatFragment(R.layout.fragment_films), FilmView {
             )
         }
 
-        with(binding){
+        with(binding) {
             recFilms.apply {
                 layoutManager = GridLayoutManager(this@FilmsFragment.context, 2)
                 adapter = filmsAdapter
@@ -83,7 +83,6 @@ class FilmsFragment : MvpAppCompatFragment(R.layout.fragment_films), FilmView {
                     filmsPresenter.getFilms()
             }
         }
-
 
 
     }

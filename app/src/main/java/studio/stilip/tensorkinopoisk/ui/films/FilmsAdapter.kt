@@ -29,8 +29,6 @@ class FilmsAdapter(private val clickListener: (String) -> Unit) :
         with(holder.viewBinding) {
             title.text = item.title
             year.text = if (item.year != 0) item.year.toString() else ""
-
-
             rating.text = item.rating.toString()
 
             when {
@@ -58,14 +56,13 @@ class FilmsAdapter(private val clickListener: (String) -> Unit) :
                 .load(item.poster)
                 .centerCrop()
                 .into(poster)
-            
+
         }
 
         holder.itemView.setOnClickListener {
             clickListener.invoke(item.id)
         }
     }
-
 
     override fun getItemCount(): Int {
         return films.size

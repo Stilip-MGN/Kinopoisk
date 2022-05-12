@@ -34,6 +34,7 @@ data class Votes(
     val kp: Int,
     val imdb: Int,
 )
+
 data class Genre(
     val name: String
 )

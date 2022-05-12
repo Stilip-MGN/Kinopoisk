@@ -21,7 +21,7 @@ class FilmsPresenter @Inject constructor(
         getFilms()
     }
 
-    fun getFilmsByName(name:String){
+    fun getFilmsByName(name: String) {
         getFilmsByNameInfo(name)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

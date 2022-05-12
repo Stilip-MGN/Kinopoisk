@@ -47,7 +47,7 @@ class FilmInfoActivity : MvpAppCompatActivity(), FilmInfoView {
         with(binding) {
             recActors.apply {
                 layoutManager =
-                    GridLayoutManager(this.context,3,GridLayoutManager.HORIZONTAL,false)
+                    GridLayoutManager(this.context, 3, GridLayoutManager.HORIZONTAL, false)
                 adapter = actorsAdapter
             }
         }

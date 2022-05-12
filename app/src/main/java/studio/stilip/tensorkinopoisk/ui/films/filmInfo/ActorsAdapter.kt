@@ -13,7 +13,7 @@ class ActorsAdapter : RecyclerView.Adapter<ActorsAdapter.ActorsHolder>() {
     class ActorsHolder(val viewBinding: CardActorBinding) :
         RecyclerView.ViewHolder(viewBinding.root)
 
-    private var actors : List<Actor> = emptyList()
+    private var actors: List<Actor> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActorsHolder {
         val binding = CardActorBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -22,7 +22,7 @@ class ActorsAdapter : RecyclerView.Adapter<ActorsAdapter.ActorsHolder>() {
 
     override fun onBindViewHolder(holder: ActorsHolder, position: Int) {
         val item = actors[position]
-        with(holder.viewBinding){
+        with(holder.viewBinding) {
             fullName.text = item.fullName
 
             Glide.with(photo.context)
