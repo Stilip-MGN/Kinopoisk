@@ -20,7 +20,6 @@ fun FilmResponse.toDomain(): Film {
         rating = rating,
         title = this.name ?: this.alternativeName ?: "",
         poster = this.poster?.previewUrl ?: "",
-        genre = this.genres?.first()?.name ?: ""
     )
 }
 
