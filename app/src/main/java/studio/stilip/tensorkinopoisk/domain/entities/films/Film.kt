@@ -6,5 +6,4 @@ data class Film(
     val rating: Double,
     val title: String,
     val poster: String,
-    val genre: String,
 )

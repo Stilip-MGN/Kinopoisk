@@ -7,27 +7,10 @@ data class FilmResponse(
     val name: String?,
     val alternativeName: String?,
     val description: String?,
-    val slogan: String?,
     val year: Int?,
     val poster: Poster?,
     val rating: Rating?,
     val votes: Votes?,
-    val videos: Videos?,
-    val budget: Budget?,
-    val fees: Fees?,
-    val distributors: Distributors?,
-    val premiere: Premiere?,
-    val images: Images?,
-    val status: String?,
-    val movieLength: Int?,
-    val productionCompanies: List<ProductionCompany>?,
-    val spokenLanguages: List<SpokenLanguage>?,
-    val facts: List<Fact>?,
-    val genres: List<Genre>?,
-    val countries: List<Country>?,
-    val seasonsInfo: List<Any>?,
-    val persons: List<Person>?,
-    val lists: List<Any>?
 )
 
 data class ExternalId(
@@ -51,75 +34,6 @@ data class Votes(
     val kp: Int,
     val imdb: Int,
 )
-
-data class Videos(
-    val trailers: List<Trailer>,
-    val teasers: List<Teaser>,
-)
-
-data class Trailer(
-    val _id: String,
-    val url: String,
-    val name: String,
-    val site: String,
-    val size: Int,
-    val type: String
-)
-
-class Teaser(
-
-)
-
-data class Budget(
-    val value: Long,
-    val currency: String
-)
-
-data class Fees(
-    val world: World,
-    val usa: USA,
-    val russia: Russia
-)
-
-data class World(val value: Long, val currency: String)
-data class USA(val value: Long, val currency: String)
-data class Russia(val value: Long, val currency: String)
-data class Distributors(
-    val distributor: String,
-    val distributorRelease: String
-)
-
-data class Premiere(
-    val country: String,
-    val world: String,
-    val russia: String,
-    val bluray: String,
-    val dvd: String
-)
-
-data class Images(
-    val postersCount: Int,
-    val backdropsCount: Int,
-    val framesCount: Int
-)
-
-data class ProductionCompany(
-    val name: String,
-    val url: String,
-    val previewUrl: String
-)
-
-data class SpokenLanguage(
-    val name: String,
-    val nameEn: String
-)
-
-data class Fact(
-    val value: String
-)
-
 data class Genre(
     val name: String
 )
-
-data class Country(val name: String)
