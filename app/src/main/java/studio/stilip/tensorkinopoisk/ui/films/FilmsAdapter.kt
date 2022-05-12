@@ -10,7 +10,7 @@ import studio.stilip.tensorkinopoisk.R
 import studio.stilip.tensorkinopoisk.databinding.CardFilmBinding
 import studio.stilip.tensorkinopoisk.domain.entities.films.Film
 
-class FilmsAdapter(private val clickListener: (Film) -> Unit) :
+class FilmsAdapter(private val clickListener: (String) -> Unit) :
     RecyclerView.Adapter<FilmsAdapter.FilmsHolder>() {
     private var films: List<Film> = emptyList()
 
@@ -34,23 +34,38 @@ class FilmsAdapter(private val clickListener: (Film) -> Unit) :
             rating.text = item.rating.toString()
 
             when {
-                item.rating > 7 -> rating.setBackgroundColor(ContextCompat.getColor(rating.context, R.color.green))
-                item.rating > 4 -> rating.setBackgroundColor(ContextCompat.getColor(rating.context, R.color.yellow))
-                else -> rating.setBackgroundColor(ContextCompat.getColor(rating.context, R.color.red))
+                item.rating > 7 -> rating.setBackgroundColor(
+                    ContextCompat.getColor(
+                        rating.context,
+                        R.color.green
+                    )
+                )
+                item.rating > 4 -> rating.setBackgroundColor(
+                    ContextCompat.getColor(
+                        rating.context,
+                        R.color.yellow
+                    )
+                )
+                else -> rating.setBackgroundColor(
+                    ContextCompat.getColor(
+                        rating.context,
+                        R.color.red
+                    )
+                )
             }
 
             Glide.with(poster.context)
                 .load(item.poster)
                 .centerCrop()
                 .into(poster)
+            
         }
-
-
 
         holder.itemView.setOnClickListener {
-            clickListener.invoke(item)
+            clickListener.invoke(item.id)
         }
     }
+
 
     override fun getItemCount(): Int {
         return films.size
