@@ -25,7 +25,7 @@ class FilmInfoActivity : MvpAppCompatActivity(), FilmInfoView {
     @Inject
     lateinit var presenterProvider: Provider<FilmInfoPresenter>
 
-    val filmPresenter: FilmInfoPresenter by moxyPresenter { presenterProvider.get() }
+    private val filmPresenter: FilmInfoPresenter by moxyPresenter { presenterProvider.get() }
 
     private val binding: ActivityFilmInfoBinding by lazy {
         ActivityFilmInfoBinding.inflate(layoutInflater)
@@ -41,6 +41,7 @@ class FilmInfoActivity : MvpAppCompatActivity(), FilmInfoView {
         setContentView(binding.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        filmPresenter.getFilm(filmId)
         actorsAdapter = ActorsAdapter()
 
         with(binding) {

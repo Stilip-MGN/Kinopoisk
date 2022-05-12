@@ -6,32 +6,6 @@ import studio.stilip.tensorkinopoisk.domain.entities.films.Film
 import studio.stilip.tensorkinopoisk.domain.entities.films.FilmInfo
 import timber.log.Timber
 
-/*fun Film.toDB(): FilmEntityForDB =
-    FilmEntityForDB(
-        id = this.id,
-        title = this.title,
-        poster = this.poster,
-        genre = this.genre
-    )
-
-fun FilmEntityForDB.toDomain():Film =
-    Film(
-        id = this.id,
-        title = this.title,
-        poster = this.poster,
-        genre = this.genre
-    )
-
-fun FilmEntityForApi.toDomain():Film =
-    Film(
-        id = this.id,
-        title = this.title,
-        poster = this.poster,
-        genre = this.genre
-    )
-
- */
-
 fun FilmResponse.toDomain(): Film {
 
     val rating =
@@ -50,28 +24,29 @@ fun FilmResponse.toDomain(): Film {
     )
 }
 
-fun FilmInfoResponse.toDomain():FilmInfo{
+fun FilmInfoResponse.toDomain(): FilmInfo {
     val rating =
         if (this.rating?.kp == 0.0) this.rating.imdb
         else this.rating?.kp
             ?: this.rating?.tmdb
             ?: 0.0
 
-    fun Person.toDomain():Actor=
+    fun Person.toDomain(): Actor =
         Actor(
-            fullName = this.name?: this.enName?:"",
+            fullName = if (this.name.isNullOrEmpty()) this.enName ?: "" else this.name,
             urlPhoto = this.photo
         )
+
 
     return FilmInfo(
         id = this.id.toString(),
         year = this.year ?: 0,
         rating = rating,
         name = this.name ?: this.alternativeName ?: "",
-        poster = this.poster?.previewUrl ?: "",
-        genre = this.genres?.map { genre -> genre.name }?: listOf(),
-        actors = this.persons?.map { person -> person.toDomain() } ?:listOf(),
-        description = this.description?: ""
+        poster = this.poster?.url ?: "",
+        genre = this.genres?.map { genre -> genre.name } ?: listOf(),
+        actors = this.persons?.map { person -> person.toDomain() } ?: listOf(),
+        description = this.description ?: ""
     )
 }
 

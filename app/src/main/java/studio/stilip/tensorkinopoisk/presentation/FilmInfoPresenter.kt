@@ -14,12 +14,8 @@ class FilmInfoPresenter @Inject constructor(
     private val getMovieById: GetFilmInfoByIdUseCase,
 ) : BasePresenter<FilmInfoView>() {
 
-    override fun onFirstViewAttach() {
-        getFilm()
-    }
-
-    private fun getFilm() {
-        getMovieById("357")
+    fun getFilm(id: String) {
+        getMovieById(id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ film ->

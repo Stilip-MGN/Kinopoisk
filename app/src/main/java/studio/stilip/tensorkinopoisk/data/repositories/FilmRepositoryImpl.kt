@@ -20,7 +20,7 @@ class FilmRepositoryImpl @Inject constructor(private val retrofitService: Retrof
     }
 
     override fun getFilmInfoById(id: String): Single<FilmInfo> {
-        return retrofitService.getMovie().map { m -> m.toDomain() }
+        return retrofitService.getMovie(id).map { m -> m.toDomain() }
     }
 
     override fun addFilmByIdToFavorite(id: String): Boolean {
