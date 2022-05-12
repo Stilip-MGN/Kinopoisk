@@ -12,10 +12,10 @@ interface RetrofitServiceFilm {
     @GET("/movie?token=${BuildConfig.API_TOKEN}&field=id")
     fun getMovie(@Query("search") search: String): Single<FilmInfoResponse>
 
-    @GET("/movie?search=2021&field=year&token=${BuildConfig.API_TOKEN}")
+    @GET("/movie?field=typeNumber&search=1&sortField=votes.imdb&sortType=-1&token=${BuildConfig.API_TOKEN}")
     fun getFilms(): Single<FilmsListResponse>
 
-    @GET("/movie?token=${BuildConfig.API_TOKEN}&isStrict=false&field=name")
+    @GET("/movie?token=${BuildConfig.API_TOKEN}&sortField=votes.imdb&sortType=-1&field=typeNumber&search=1&isStrict=false&field=name")
     fun getFilmsByName(@Query("search") search: String): Single<FilmsListResponse>
 }
 //ZQQ8GMN-TN54SGK-NB3MKEC-ZKB8V06 test
