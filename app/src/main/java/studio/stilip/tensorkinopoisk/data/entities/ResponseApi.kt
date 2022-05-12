@@ -123,10 +123,3 @@ data class Genre(
 )
 
 data class Country(val name: String)
-data class Person(
-    val id: Int,
-    val name: String,
-    val enName: String,
-    val photo: String,
-    val enProfession: String
-)

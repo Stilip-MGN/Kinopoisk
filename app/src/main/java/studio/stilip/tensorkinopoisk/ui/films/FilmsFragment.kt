@@ -18,6 +18,7 @@ import studio.stilip.tensorkinopoisk.databinding.FragmentFilmsBinding
 import studio.stilip.tensorkinopoisk.domain.entities.films.Film
 import studio.stilip.tensorkinopoisk.domain.usecases.GetFilmInfoByIdUseCase
 import studio.stilip.tensorkinopoisk.presentation.FilmsPresenter
+import studio.stilip.tensorkinopoisk.ui.films.filmInfo.FilmInfoActivity
 import studio.stilip.tensorkinopoisk.views.FilmView
 import timber.log.Timber
 import javax.inject.Inject
@@ -41,7 +42,14 @@ class FilmsFragment : MvpAppCompatFragment(R.layout.fragment_films), FilmView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding = FragmentFilmsBinding.bind(view)
 
-        filmsAdapter = FilmsAdapter { film -> }
+        filmsAdapter = FilmsAdapter { id ->
+            startActivity(
+                FilmInfoActivity.createIntent(
+                    requireContext(),
+                    id
+                )
+            )
+        }
 
         binding.recFilms.apply {
             layoutManager = GridLayoutManager(this@FilmsFragment.context, 2)
@@ -59,7 +67,6 @@ class FilmsFragment : MvpAppCompatFragment(R.layout.fragment_films), FilmView {
         )
 
         binding.textSearch.setEndIconOnClickListener {
-           // filmsPresenter.getFilms()
         }
 
     }
