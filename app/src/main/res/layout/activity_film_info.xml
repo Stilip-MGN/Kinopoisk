@@ -11,10 +11,9 @@
         android:background="@color/kino_black"
         tools:context=".ui.films.filmInfo.FilmInfoActivity">
 
-
         <ImageView
             android:id="@+id/poster"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="300dp"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
@@ -24,11 +23,11 @@
 
         <TextView
             android:id="@+id/film_name"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="24sp"
+            android:textSize="@dimen/title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/poster"
@@ -36,9 +35,9 @@
 
         <TextView
             android:id="@+id/rating"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="8.8"
+            android:text="@string/_8_8"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="20sp"
@@ -50,8 +49,10 @@
             android:id="@+id/year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
             android:textColor="@color/white"
-            android:textSize="18sp"
+            android:textSize="@dimen/medium"
+            app:layout_constrainedHeight="true"
             app:layout_constraintEnd_toStartOf="@+id/genre"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -62,8 +63,12 @@
             android:id="@+id/genre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/margin_vertical"
             android:textColor="@color/white"
-            android:textSize="18sp"
+            android:textSize="@dimen/medium"
+            app:layout_constrainedHeight="true"
+            app:layout_constrainedWidth="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@id/year"
@@ -72,24 +77,23 @@
 
         <TextView
             android:id="@+id/description_field"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="10dp"
-            android:text="Описание"
+            android:text="@string/description_only"
             android:textColor="@color/white"
-            android:textSize="22sp"
+            android:textSize="@dimen/header"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/year" />
+            app:layout_constraintTop_toBottomOf="@id/genre" />
 
         <TextView
             android:id="@+id/description"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="@dimen/small"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/description_field"
@@ -97,22 +101,22 @@
 
         <TextView
             android:id="@+id/actors"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="10dp"
-            android:text="Актёры"
+            android:layout_marginTop="@dimen/margin_vertical"
+            android:text="@string/actors"
             android:textColor="@color/white"
-            android:textSize="22sp"
+            android:textSize="@dimen/header"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/description" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_marginBottom="10dp"
             android:id="@+id/rec_actors"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_vertical"
             app:layout_constraintTop_toBottomOf="@id/actors" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
