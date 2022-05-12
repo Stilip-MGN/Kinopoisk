@@ -64,11 +64,6 @@ class FilmsFragment : MvpAppCompatFragment(R.layout.fragment_films), FilmView {
 
     }
 
-    override fun showFilm(film: Film) {
-        filmsAdapter.setList(listOf(film))
-        Timber.e("film[" + film.title + " " + film.genre + "]")
-    }
-
     override fun showFilms(list: List<Film>) {
         filmsAdapter.setList(list)
     }

@@ -5,16 +5,31 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import moxy.MvpAppCompatActivity
+import moxy.ktx.moxyPresenter
+import studio.stilip.tensorkinopoisk.App
 import studio.stilip.tensorkinopoisk.R
 import studio.stilip.tensorkinopoisk.databinding.ActivityFilmInfoBinding
+import studio.stilip.tensorkinopoisk.domain.entities.films.Film
+import studio.stilip.tensorkinopoisk.presentation.FilmInfoPresenter
+import studio.stilip.tensorkinopoisk.views.FilmInfoView
+import timber.log.Timber
+import javax.inject.Inject
+import javax.inject.Provider
 
-class FilmInfoActivity : AppCompatActivity() {
+class FilmInfoActivity : MvpAppCompatActivity(), FilmInfoView {
 
     private val binding: ActivityFilmInfoBinding by lazy {
         ActivityFilmInfoBinding.inflate(layoutInflater)
     }
 
+    @Inject
+    lateinit var presenterProvider: Provider<FilmInfoPresenter>
+
+    val filmPresenter: FilmInfoPresenter by moxyPresenter { presenterProvider.get() }
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -29,6 +44,18 @@ class FilmInfoActivity : AppCompatActivity() {
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun showFilm(film: Film) {
+
+    }
+
+    override fun showError(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun showSuccess(message: String) {
+        TODO("Not yet implemented")
     }
 
     companion object {

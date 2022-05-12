@@ -6,8 +6,6 @@ import studio.stilip.tensorkinopoisk.base.BaseView
 import studio.stilip.tensorkinopoisk.domain.entities.films.Film
 
 @StateStrategyType(value = AddToEndSingleStrategy::class)
-interface FilmView: BaseView {
-    fun showFilms(list: List<Film>)
+interface FilmInfoView : BaseView {
+    fun showFilm(film: Film)
 }
-
-
