@@ -101,6 +101,6 @@ class FilmsFragment : MvpAppCompatFragment(R.layout.fragment_films), FilmView {
 
     private companion object {
         @Dp
-        const val EDUCATION_LIST_BOTTOM_PADDING = 90F
+        const val EDUCATION_LIST_BOTTOM_PADDING = 30F
     }
 }

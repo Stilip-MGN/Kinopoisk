@@ -35,6 +35,8 @@ class FilmInfoActivity : MvpAppCompatActivity(), FilmInfoView {
 
     private val filmId: String by lazy { intent.getStringExtra(EXTRA_FILM_ID)!! }
 
+    private var isDescriptionOpen = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
@@ -71,7 +73,18 @@ class FilmInfoActivity : MvpAppCompatActivity(), FilmInfoView {
             rating.text = film.rating.toString()
             year.text = film.year.toString()
             genre.text = film.genre.joinToString(", ")
+
             description.text = film.description
+            description.setOnClickListener {
+                if (isDescriptionOpen) {
+                    isDescriptionOpen = false
+                    description.maxLines = 4
+                } else {
+                    isDescriptionOpen = true
+                    description.maxLines = 50
+                }
+            }
+
             Glide.with(poster.context)
                 .load(film.poster)
                 .centerCrop()

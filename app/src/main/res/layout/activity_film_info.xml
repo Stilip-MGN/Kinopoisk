@@ -23,6 +23,7 @@
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
         <TextView
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
             android:id="@+id/film_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -95,6 +96,8 @@
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
             android:textColor="@color/white"
             android:textSize="@dimen/small"
+            android:ellipsize="end"
+            android:maxLines="4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/description_field"
