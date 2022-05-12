@@ -7,9 +7,11 @@ import studio.stilip.tensorkinopoisk.domain.entities.films.FilmInfo
 interface FilmRepository {
     fun getFilmsInfo(): Single<List<Film>>
 
-    fun getFilmInfoById(id:String): Single<FilmInfo>
+    fun getFilmsByName(name: String): Single<List<Film>>
 
-    fun addFilmByIdToFavorite(id:String): Boolean
+    fun getFilmInfoById(id: String): Single<FilmInfo>
 
-    fun removeFilmByIdToFavorite(id:String): Boolean
+    fun addFilmByIdToFavorite(id: String): Boolean
+
+    fun removeFilmByIdToFavorite(id: String): Boolean
 }

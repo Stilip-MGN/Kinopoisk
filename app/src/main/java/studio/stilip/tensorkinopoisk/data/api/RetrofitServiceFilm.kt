@@ -14,5 +14,8 @@ interface RetrofitServiceFilm {
 
     @GET("/movie?search=2021&field=year&token=${BuildConfig.API_TOKEN}")
     fun getFilms(): Single<FilmsListResponse>
+
+    @GET("/movie?token=${BuildConfig.API_TOKEN}&isStrict=false&field=name")
+    fun getFilmsByName(@Query("search") search: String): Single<FilmsListResponse>
 }
 //ZQQ8GMN-TN54SGK-NB3MKEC-ZKB8V06 test

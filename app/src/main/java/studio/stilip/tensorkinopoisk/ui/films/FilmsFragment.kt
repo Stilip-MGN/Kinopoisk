@@ -2,6 +2,7 @@ package studio.stilip.tensorkinopoisk.ui.films
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.tinkoff_hr.utils.ui.Dp
@@ -51,23 +52,39 @@ class FilmsFragment : MvpAppCompatFragment(R.layout.fragment_films), FilmView {
             )
         }
 
-        binding.recFilms.apply {
-            layoutManager = GridLayoutManager(this@FilmsFragment.context, 2)
-            adapter = filmsAdapter
+        with(binding){
+            recFilms.apply {
+                layoutManager = GridLayoutManager(this@FilmsFragment.context, 2)
+                adapter = filmsAdapter
 
+            }
+
+            recFilms.addItemDecoration(
+                PaddingItemDecoration(
+                    bottom = requireContext().dpToPx(EDUCATION_LIST_BOTTOM_PADDING),
+                    filter = { holder ->
+
+                        holder.adapterPosition == filmsAdapter.itemCount - 1
+                    })
+            )
+
+            textSearch.setEndIconOnClickListener {
+
+                (textSearch)
+            }
+
+            textSearch.setEndIconOnClickListener {
+                val searchName = fieldSearch.text.toString()
+                filmsPresenter.getFilmsByName(searchName)
+            }
+
+            fieldSearch.addTextChangedListener {
+                if (fieldSearch.text.toString().isEmpty())
+                    filmsPresenter.getFilms()
+            }
         }
 
-        binding.recFilms.addItemDecoration(
-            PaddingItemDecoration(
-                bottom = requireContext().dpToPx(EDUCATION_LIST_BOTTOM_PADDING),
-                filter = { holder ->
 
-                    holder.adapterPosition == filmsAdapter.itemCount - 1
-                })
-        )
-
-        binding.textSearch.setEndIconOnClickListener {
-        }
 
     }
 
