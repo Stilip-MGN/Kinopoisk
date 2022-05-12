@@ -1,4 +1,4 @@
-package studio.stilip.tensorkinopoisk.ui.films.FilmInfo
+package studio.stilip.tensorkinopoisk.ui.films.filmInfo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
