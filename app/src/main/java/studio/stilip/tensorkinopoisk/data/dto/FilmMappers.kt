@@ -1,10 +1,9 @@
 package studio.stilip.tensorkinopoisk.data.dto
 
 import studio.stilip.tensorkinopoisk.data.entities.*
-import studio.stilip.tensorkinopoisk.domain.entities.films.Actor
+import studio.stilip.tensorkinopoisk.domain.entities.Actor
 import studio.stilip.tensorkinopoisk.domain.entities.films.Film
 import studio.stilip.tensorkinopoisk.domain.entities.films.FilmInfo
-import timber.log.Timber
 
 fun FilmResponse.toDomain(): Film {
 

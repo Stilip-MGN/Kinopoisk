@@ -1,5 +1,7 @@
 package studio.stilip.tensorkinopoisk.domain.entities.films
 
+import studio.stilip.tensorkinopoisk.domain.entities.Actor
+
 data class FilmInfo(
     val id: String,
     val year: Int,

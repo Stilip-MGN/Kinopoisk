@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import studio.stilip.tensorkinopoisk.databinding.CardActorBinding
-import studio.stilip.tensorkinopoisk.domain.entities.films.Actor
+import studio.stilip.tensorkinopoisk.domain.entities.Actor
 
 class ActorsAdapter : RecyclerView.Adapter<ActorsAdapter.ActorsHolder>() {
 
