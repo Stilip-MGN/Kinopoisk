@@ -3,6 +3,7 @@ package studio.stilip.tensorkinopoisk.di
 import dagger.Component
 import studio.stilip.tensorkinopoisk.ui.films.FilmsFragment
 import studio.stilip.tensorkinopoisk.ui.films.filmInfo.FilmInfoActivity
+import studio.stilip.tensorkinopoisk.ui.series.SeriesFragment
 import javax.inject.Singleton
 
 
@@ -10,5 +11,6 @@ import javax.inject.Singleton
 @Singleton
 interface AppComponent {
     fun inject(fragment: FilmsFragment)
+    fun inject(fragment: SeriesFragment)
     fun inject(activity: FilmInfoActivity)
 }

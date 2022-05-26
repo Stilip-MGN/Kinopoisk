@@ -4,31 +4,79 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import com.example.tinkoff_hr.utils.ui.Dp
+import com.example.tinkoff_hr.utils.ui.PaddingItemDecoration
+import com.example.tinkoff_hr.utils.ui.dpToPx
+import moxy.MvpAppCompatFragment
+import moxy.ktx.moxyPresenter
+import studio.stilip.tensorkinopoisk.App
+import studio.stilip.tensorkinopoisk.R
 import studio.stilip.tensorkinopoisk.databinding.FragmentSeriesBinding
+import studio.stilip.tensorkinopoisk.domain.entities.films.Film
+import studio.stilip.tensorkinopoisk.presentation.FilmsPresenter
+import studio.stilip.tensorkinopoisk.presentation.SeriesPresenter
+import studio.stilip.tensorkinopoisk.ui.films.FilmsFragment
+import studio.stilip.tensorkinopoisk.views.SeriesView
+import timber.log.Timber
+import javax.inject.Inject
+import javax.inject.Provider
 
-class SeriesFragment : Fragment() {
+class SeriesFragment : MvpAppCompatFragment(R.layout.fragment_series), SeriesView {
 
-    private var _binding: FragmentSeriesBinding? = null
+    private lateinit var binding: FragmentSeriesBinding
+    private lateinit var seriesAdapter: SeriesAdapter
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    @Inject
+    lateinit var presenterProvider: Provider<SeriesPresenter>
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    val seriesPresenter: SeriesPresenter by moxyPresenter { presenterProvider.get() }
 
-        _binding = FragmentSeriesBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        return root
+    override fun onCreate(savedInstanceState: Bundle?) {
+        App.appComponent.inject(this)
+        super.onCreate(savedInstanceState)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding = FragmentSeriesBinding.bind(view)
+
+        seriesAdapter = SeriesAdapter()
+
+        with(binding) {
+            recSeries.apply {
+                layoutManager = GridLayoutManager(this@SeriesFragment.context, 2)
+                adapter = seriesAdapter
+
+            }
+
+            recSeries.addItemDecoration(
+                PaddingItemDecoration(
+                    bottom = requireContext().dpToPx(EDUCATION_LIST_BOTTOM_PADDING),
+                    filter = { holder ->
+
+                        holder.adapterPosition == seriesAdapter.itemCount - 1
+                    })
+            )
+        }
     }
+
+    override fun showSeries(list: List<Film>) {
+        seriesAdapter.setList(list)
+    }
+
+    override fun showError(message: String) {
+        Timber.e(message)
+    }
+
+    override fun showSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    private companion object {
+        @Dp
+        const val EDUCATION_LIST_BOTTOM_PADDING = 30F
+    }
+
 }

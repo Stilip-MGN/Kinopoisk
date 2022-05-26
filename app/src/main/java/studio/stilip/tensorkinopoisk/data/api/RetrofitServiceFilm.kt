@@ -5,7 +5,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import studio.stilip.tensorkinopoisk.BuildConfig
 import studio.stilip.tensorkinopoisk.data.entities.FilmInfoResponse
-import studio.stilip.tensorkinopoisk.data.entities.FilmResponse
+import studio.stilip.tensorkinopoisk.data.entities.FilmsListResponse
 
 interface RetrofitServiceFilm {
 
