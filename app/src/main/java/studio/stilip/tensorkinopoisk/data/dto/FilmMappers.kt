@@ -5,7 +5,7 @@ import studio.stilip.tensorkinopoisk.domain.entities.Actor
 import studio.stilip.tensorkinopoisk.domain.entities.films.Film
 import studio.stilip.tensorkinopoisk.domain.entities.films.FilmInfo
 
-fun FilmResponse.toDomain(): Film {
+fun MovieResponse.toFilmDomain(): Film {
 
     val rating =
         if (this.rating?.kp == 0.0) this.rating.imdb
