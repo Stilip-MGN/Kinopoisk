@@ -1,5 +1,5 @@
 package studio.stilip.tensorkinopoisk.data.entities
 
-data class FilmsListResponse(
+data class MoviesListResponse(
     val docs: List<MovieResponse>
 )
