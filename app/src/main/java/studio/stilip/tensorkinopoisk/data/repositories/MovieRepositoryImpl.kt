@@ -47,4 +47,11 @@ class MovieRepositoryImpl @Inject constructor(private val retrofitService: Retro
                 list.docs.map { m -> m.toFilmDomain() }
             }
     }
+
+    override fun getSeriesByName(name: String): Single<List<Film>> {
+        return retrofitService.getSeriesByName(name)
+            .map { list ->
+                list.docs.map { m -> m.toFilmDomain() }
+            }
+    }
 }

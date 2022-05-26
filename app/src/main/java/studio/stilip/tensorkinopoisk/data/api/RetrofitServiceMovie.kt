@@ -12,13 +12,16 @@ interface RetrofitServiceMovie {
     @GET("/movie?token=${BuildConfig.API_TOKEN}&field=id")
     fun getMovie(@Query("search") search: String): Single<MovieInfoResponse>
 
-    @GET("/movie?field=typeNumber&search=1&sortField=votes.imdb&sortType=-1&token=${BuildConfig.API_TOKEN}")
+    @GET("/movie?field=typeNumber&search=1&limit=20&sortField=votes.imdb&sortType=-1&token=${BuildConfig.API_TOKEN}")
     fun getFilms(): Single<MoviesListResponse>
 
-    @GET("/movie?token=${BuildConfig.API_TOKEN}&sortField=votes.imdb&sortType=-1&field=typeNumber&search=1&isStrict=false&field=name")
+    @GET("/movie?token=${BuildConfig.API_TOKEN}&limit=20&sortField=votes.imdb&sortType=-1&field=typeNumber&search=1&isStrict=false&field=name")
     fun getFilmsByName(@Query("search") search: String): Single<MoviesListResponse>
 
-    @GET("/movie?field=typeNumber&search=2&page=2&limit=10&sortField=votes.imdb&sortType=-1&token=${BuildConfig.API_TOKEN}")
+    @GET("/movie?field=typeNumber&search=2&page=1&limit=20&sortField=votes.imdb&sortType=-1&token=${BuildConfig.API_TOKEN}")
     fun getSeries(): Single<MoviesListResponse>
+
+    @GET("/movie?token=${BuildConfig.API_TOKEN}&limit=20&sortField=votes.imdb&sortType=-1&field=typeNumber&search=2&isStrict=false&field=name")
+    fun getSeriesByName(@Query("search") search: String): Single<MoviesListResponse>
 }
 //ZQQ8GMN-TN54SGK-NB3MKEC-ZKB8V06 test

@@ -16,4 +16,6 @@ interface MovieRepository {
     fun removeFilmByIdToFavorite(id: String): Boolean
 
     fun getSeriesInfo(): Single<List<Film>>
+
+    fun getSeriesByName(name: String): Single<List<Film>>
 }

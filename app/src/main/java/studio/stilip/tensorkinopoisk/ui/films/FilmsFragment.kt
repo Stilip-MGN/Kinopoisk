@@ -64,11 +64,6 @@ class FilmsFragment : MvpAppCompatFragment(R.layout.fragment_films), FilmView {
             )
 
             textSearch.setEndIconOnClickListener {
-
-                (textSearch)
-            }
-
-            textSearch.setEndIconOnClickListener {
                 val searchName = fieldSearch.text.toString()
                 filmsPresenter.getFilmsByName(searchName)
             }

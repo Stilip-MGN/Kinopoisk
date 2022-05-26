@@ -2,6 +2,7 @@ package studio.stilip.tensorkinopoisk.ui.series
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.tinkoff_hr.utils.ui.Dp
 import com.example.tinkoff_hr.utils.ui.PaddingItemDecoration
@@ -61,6 +62,16 @@ class SeriesFragment : MvpAppCompatFragment(R.layout.fragment_series), SeriesVie
                         holder.adapterPosition == seriesAdapter.itemCount - 1
                     })
             )
+
+            textSearch.setEndIconOnClickListener {
+                val searchName = fieldSearch.text.toString()
+                seriesPresenter.getSeriesByName(searchName)
+            }
+
+            fieldSearch.addTextChangedListener {
+                if (fieldSearch.text.toString().isEmpty())
+                    seriesPresenter.getSeries()
+            }
         }
     }
 
