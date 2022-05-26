@@ -1,6 +1,6 @@
 package studio.stilip.tensorkinopoisk.data.entities
 
-data class FilmResponse(
+data class MovieResponse(
     val id: Int,
     val externalId: ExternalId,
     val type: String?,

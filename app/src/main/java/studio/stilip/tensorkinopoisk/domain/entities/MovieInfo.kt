@@ -1,6 +1,6 @@
-package studio.stilip.tensorkinopoisk.domain.entities.films
+package studio.stilip.tensorkinopoisk.domain.entities
 
-data class FilmInfo(
+data class MovieInfo(
     val id: String,
     val year: Int,
     val rating: Double,

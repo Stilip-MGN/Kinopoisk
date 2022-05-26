@@ -4,28 +4,28 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import moxy.InjectViewState
 import studio.stilip.tensorkinopoisk.base.BasePresenter
-import studio.stilip.tensorkinopoisk.domain.usecases.films.GetFilmsByNameUseCase
-import studio.stilip.tensorkinopoisk.domain.usecases.films.GetFilmsInfoUseCase
-import studio.stilip.tensorkinopoisk.views.FilmView
+import studio.stilip.tensorkinopoisk.domain.usecases.series.GetSeriesByNameUseCase
+import studio.stilip.tensorkinopoisk.domain.usecases.series.GetSeriesInfoUseCase
+import studio.stilip.tensorkinopoisk.views.SeriesView
 import timber.log.Timber
 import javax.inject.Inject
 
 @InjectViewState
-class FilmsPresenter @Inject constructor(
-    private val getFilmsInfo: GetFilmsInfoUseCase,
-    private val getFilmsByNameInfo: GetFilmsByNameUseCase
-) : BasePresenter<FilmView>() {
+class SeriesPresenter @Inject constructor(
+    private val getSeriesInfo: GetSeriesInfoUseCase,
+    private val getSeriesByNameInfo: GetSeriesByNameUseCase
+) : BasePresenter<SeriesView>() {
 
     override fun onFirstViewAttach() {
-        getFilms()
+        getSeries()
     }
 
-    fun getFilmsByName(name: String) {
-        getFilmsByNameInfo(name)
+    fun getSeries() {
+        getSeriesInfo()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ list ->
-                viewState.showFilms(list)
+                viewState.showSeries(list)
             }, { error ->
                 viewState.showError("Данные недоступны, повторите попытку позже")
                 Timber.e(error)
@@ -33,12 +33,12 @@ class FilmsPresenter @Inject constructor(
             }).disposeOnFinish()
     }
 
-    fun getFilms() {
-        getFilmsInfo()
+    fun getSeriesByName(name: String) {
+        getSeriesByNameInfo(name)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ list ->
-                viewState.showFilms(list)
+                viewState.showSeries(list)
             }, { error ->
                 viewState.showError("Данные недоступны, повторите попытку позже")
                 Timber.e(error)

@@ -3,7 +3,6 @@ package studio.stilip.tensorkinopoisk.ui.films
 import android.os.Bundle
 import android.view.View
 import androidx.core.widget.addTextChangedListener
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.tinkoff_hr.utils.ui.Dp
 import com.example.tinkoff_hr.utils.ui.PaddingItemDecoration
@@ -12,14 +11,10 @@ import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 import studio.stilip.tensorkinopoisk.App
 import studio.stilip.tensorkinopoisk.R
-import studio.stilip.tensorkinopoisk.data.api.RetrofitProvider
-import studio.stilip.tensorkinopoisk.data.api.RetrofitServiceFilm
-import studio.stilip.tensorkinopoisk.data.repositories.FilmRepositoryImpl
 import studio.stilip.tensorkinopoisk.databinding.FragmentFilmsBinding
 import studio.stilip.tensorkinopoisk.domain.entities.films.Film
-import studio.stilip.tensorkinopoisk.domain.usecases.GetFilmInfoByIdUseCase
 import studio.stilip.tensorkinopoisk.presentation.FilmsPresenter
-import studio.stilip.tensorkinopoisk.ui.films.filmInfo.FilmInfoActivity
+import studio.stilip.tensorkinopoisk.ui.movieInfo.MovieInfoActivity
 import studio.stilip.tensorkinopoisk.views.FilmView
 import timber.log.Timber
 import javax.inject.Inject
@@ -45,7 +40,7 @@ class FilmsFragment : MvpAppCompatFragment(R.layout.fragment_films), FilmView {
 
         filmsAdapter = FilmsAdapter { id ->
             startActivity(
-                FilmInfoActivity.createIntent(
+                MovieInfoActivity.createIntent(
                     requireContext(),
                     id
                 )
@@ -67,11 +62,6 @@ class FilmsFragment : MvpAppCompatFragment(R.layout.fragment_films), FilmView {
                         holder.adapterPosition == filmsAdapter.itemCount - 1
                     })
             )
-
-            textSearch.setEndIconOnClickListener {
-
-                (textSearch)
-            }
 
             textSearch.setEndIconOnClickListener {
                 val searchName = fieldSearch.text.toString()

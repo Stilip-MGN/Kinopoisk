@@ -12,12 +12,12 @@ class RetrofitProvider @Inject constructor() {
         .addInterceptor(HttpLoggingInterceptor().apply { setLevel(HttpLoggingInterceptor.Level.BODY) })
         .build()
 
-    val retrofitServiceFilm: RetrofitServiceFilm = Retrofit.Builder()
+    val retrofitServiceFilm: RetrofitServiceMovie = Retrofit.Builder()
         .baseUrl("https://api.kinopoisk.dev")
         .client(httpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()
-        .create(RetrofitServiceFilm::class.java)
+        .create(RetrofitServiceMovie::class.java)
 
 }

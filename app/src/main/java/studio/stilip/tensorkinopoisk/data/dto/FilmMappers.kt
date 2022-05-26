@@ -1,12 +1,11 @@
 package studio.stilip.tensorkinopoisk.data.dto
 
 import studio.stilip.tensorkinopoisk.data.entities.*
-import studio.stilip.tensorkinopoisk.domain.entities.films.Actor
+import studio.stilip.tensorkinopoisk.domain.entities.Actor
 import studio.stilip.tensorkinopoisk.domain.entities.films.Film
-import studio.stilip.tensorkinopoisk.domain.entities.films.FilmInfo
-import timber.log.Timber
+import studio.stilip.tensorkinopoisk.domain.entities.MovieInfo
 
-fun FilmResponse.toDomain(): Film {
+fun MovieResponse.toFilmDomain(): Film {
 
     val rating =
         if (this.rating?.kp == 0.0) this.rating.imdb
@@ -23,7 +22,7 @@ fun FilmResponse.toDomain(): Film {
     )
 }
 
-fun FilmInfoResponse.toDomain(): FilmInfo {
+fun MovieInfoResponse.toDomain(): MovieInfo {
     val rating =
         if (this.rating?.kp == 0.0) this.rating.imdb
         else this.rating?.kp
@@ -37,7 +36,7 @@ fun FilmInfoResponse.toDomain(): FilmInfo {
         )
 
 
-    return FilmInfo(
+    return MovieInfo(
         id = this.id.toString(),
         year = this.year ?: 0,
         rating = rating,
