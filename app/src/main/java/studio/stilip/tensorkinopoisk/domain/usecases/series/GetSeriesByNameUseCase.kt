@@ -7,6 +7,6 @@ import javax.inject.Inject
 
 class GetSeriesByNameUseCase @Inject constructor(private val seriesRepository: MovieRepository) {
     operator fun invoke(name: String): Single<List<Film>> {
-        return seriesRepository.getFilmsByName(name)
+        return seriesRepository.getSeriesByName(name)
     }
 }
