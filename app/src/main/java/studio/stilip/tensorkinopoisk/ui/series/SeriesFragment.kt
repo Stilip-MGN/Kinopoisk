@@ -1,11 +1,7 @@
 package studio.stilip.tensorkinopoisk.ui.series
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.core.widget.addTextChangedListener
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.tinkoff_hr.utils.ui.Dp
 import com.example.tinkoff_hr.utils.ui.PaddingItemDecoration
@@ -16,9 +12,8 @@ import studio.stilip.tensorkinopoisk.App
 import studio.stilip.tensorkinopoisk.R
 import studio.stilip.tensorkinopoisk.databinding.FragmentSeriesBinding
 import studio.stilip.tensorkinopoisk.domain.entities.films.Film
-import studio.stilip.tensorkinopoisk.presentation.FilmsPresenter
 import studio.stilip.tensorkinopoisk.presentation.SeriesPresenter
-import studio.stilip.tensorkinopoisk.ui.films.FilmsFragment
+import studio.stilip.tensorkinopoisk.ui.movieInfo.MovieInfoActivity
 import studio.stilip.tensorkinopoisk.views.SeriesView
 import timber.log.Timber
 import javax.inject.Inject
@@ -42,7 +37,14 @@ class SeriesFragment : MvpAppCompatFragment(R.layout.fragment_series), SeriesVie
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding = FragmentSeriesBinding.bind(view)
 
-        seriesAdapter = SeriesAdapter()
+        seriesAdapter = SeriesAdapter{ id ->
+            startActivity(
+                MovieInfoActivity.createIntent(
+                    requireContext(),
+                    id
+                )
+            )
+        }
 
         with(binding) {
             recSeries.apply {

@@ -1,4 +1,4 @@
-package studio.stilip.tensorkinopoisk.ui.films.filmInfo
+package studio.stilip.tensorkinopoisk.ui.movieInfo
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

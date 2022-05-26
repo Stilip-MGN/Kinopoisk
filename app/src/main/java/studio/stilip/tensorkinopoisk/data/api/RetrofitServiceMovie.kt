@@ -4,13 +4,13 @@ import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
 import studio.stilip.tensorkinopoisk.BuildConfig
-import studio.stilip.tensorkinopoisk.data.entities.FilmInfoResponse
+import studio.stilip.tensorkinopoisk.data.entities.MovieInfoResponse
 import studio.stilip.tensorkinopoisk.data.entities.MoviesListResponse
 
 interface RetrofitServiceMovie {
 
     @GET("/movie?token=${BuildConfig.API_TOKEN}&field=id")
-    fun getMovie(@Query("search") search: String): Single<FilmInfoResponse>
+    fun getMovie(@Query("search") search: String): Single<MovieInfoResponse>
 
     @GET("/movie?field=typeNumber&search=1&sortField=votes.imdb&sortType=-1&token=${BuildConfig.API_TOKEN}")
     fun getFilms(): Single<MoviesListResponse>

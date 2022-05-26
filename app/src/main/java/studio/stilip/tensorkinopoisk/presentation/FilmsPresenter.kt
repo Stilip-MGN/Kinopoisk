@@ -17,7 +17,7 @@ class FilmsPresenter @Inject constructor(
 ) : BasePresenter<FilmView>() {
 
     override fun onFirstViewAttach() {
-       // getFilms()
+        getFilms()
     }
 
     fun getFilmsByName(name: String) {

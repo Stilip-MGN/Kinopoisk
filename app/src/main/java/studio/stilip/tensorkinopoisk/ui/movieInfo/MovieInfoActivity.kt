@@ -1,4 +1,4 @@
-package studio.stilip.tensorkinopoisk.ui.films.filmInfo
+package studio.stilip.tensorkinopoisk.ui.movieInfo
 
 import android.content.Context
 import android.content.Intent
@@ -12,18 +12,18 @@ import moxy.ktx.moxyPresenter
 import studio.stilip.tensorkinopoisk.App
 import studio.stilip.tensorkinopoisk.R
 import studio.stilip.tensorkinopoisk.databinding.ActivityFilmInfoBinding
-import studio.stilip.tensorkinopoisk.domain.entities.films.FilmInfo
-import studio.stilip.tensorkinopoisk.presentation.FilmInfoPresenter
+import studio.stilip.tensorkinopoisk.domain.entities.MovieInfo
+import studio.stilip.tensorkinopoisk.presentation.MovieInfoPresenter
 import studio.stilip.tensorkinopoisk.views.FilmInfoView
 import javax.inject.Inject
 import javax.inject.Provider
 
-class FilmInfoActivity : MvpAppCompatActivity(), FilmInfoView {
+class MovieInfoActivity : MvpAppCompatActivity(), FilmInfoView {
 
     @Inject
-    lateinit var presenterProvider: Provider<FilmInfoPresenter>
+    lateinit var presenterProvider: Provider<MovieInfoPresenter>
 
-    private val filmPresenter: FilmInfoPresenter by moxyPresenter { presenterProvider.get() }
+    private val filmPresenter: MovieInfoPresenter by moxyPresenter { presenterProvider.get() }
 
     private val binding: ActivityFilmInfoBinding by lazy {
         ActivityFilmInfoBinding.inflate(layoutInflater)
@@ -41,7 +41,7 @@ class FilmInfoActivity : MvpAppCompatActivity(), FilmInfoView {
         setContentView(binding.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        filmPresenter.getFilm(filmId)
+        filmPresenter.getMovie(filmId)
         actorsAdapter = ActorsAdapter()
 
         with(binding) {
@@ -65,7 +65,7 @@ class FilmInfoActivity : MvpAppCompatActivity(), FilmInfoView {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun showFilm(film: FilmInfo) {
+    override fun showFilm(film: MovieInfo) {
         with(binding) {
             filmName.text = film.name
             rating.text = film.rating.toString()
@@ -126,7 +126,7 @@ class FilmInfoActivity : MvpAppCompatActivity(), FilmInfoView {
         private const val EXTRA_FILM_ID = "extra_film_id"
 
         fun createIntent(context: Context, filmId: String): Intent {
-            return Intent(context, FilmInfoActivity::class.java).apply {
+            return Intent(context, MovieInfoActivity::class.java).apply {
                 putExtra(EXTRA_FILM_ID, filmId)
             }
         }

@@ -10,11 +10,11 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @InjectViewState
-class FilmInfoPresenter @Inject constructor(
+class MovieInfoPresenter @Inject constructor(
     private val getMovieById: GetFilmInfoByIdUseCase,
 ) : BasePresenter<FilmInfoView>() {
 
-    fun getFilm(id: String) {
+    fun getMovie(id: String) {
         getMovieById(id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

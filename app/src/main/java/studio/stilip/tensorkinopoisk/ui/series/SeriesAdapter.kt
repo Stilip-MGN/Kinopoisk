@@ -10,7 +10,7 @@ import studio.stilip.tensorkinopoisk.R
 import studio.stilip.tensorkinopoisk.databinding.CardFilmBinding
 import studio.stilip.tensorkinopoisk.domain.entities.films.Film
 
-class SeriesAdapter() :
+class SeriesAdapter(private val clickListener: (String) -> Unit) :
     RecyclerView.Adapter<SeriesAdapter.FilmsHolder>() {
     private var series: List<Film> = emptyList()
 
@@ -60,7 +60,7 @@ class SeriesAdapter() :
         }
 
         holder.itemView.setOnClickListener {
-            //clickListener.invoke(item.id)
+            clickListener.invoke(item.id)
         }
     }
 
