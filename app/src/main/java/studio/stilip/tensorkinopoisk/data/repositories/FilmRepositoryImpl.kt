@@ -39,4 +39,11 @@ class FilmRepositoryImpl @Inject constructor(private val retrofitService: Retrof
         return true
         TODO("Not yet implemented")
     }
+
+    override fun getSeriesInfo(): Single<List<Film>> {
+        return retrofitService.getSeries()
+            .map { list ->
+                list.docs.map { m -> m.toDomain() }
+            }
+    }
 }

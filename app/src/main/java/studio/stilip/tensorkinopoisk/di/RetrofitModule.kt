@@ -13,9 +13,4 @@ class RetrofitModule {
     fun provideRetrofitServiceFilm(retrofitProvider: RetrofitProvider): RetrofitServiceFilm {
         return retrofitProvider.retrofitServiceFilm
     }
-
-    @Provides
-    fun provideRetrofitServiceSeries(retrofitProvider: RetrofitProvider): RetrofitServiceSeries {
-        return retrofitProvider.retrofitServiceSeries
-    }
 }

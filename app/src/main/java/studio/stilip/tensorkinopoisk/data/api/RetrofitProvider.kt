@@ -21,12 +21,4 @@ class RetrofitProvider @Inject constructor() {
         .build()
         .create(RetrofitServiceFilm::class.java)
 
-    val retrofitServiceSeries: RetrofitServiceSeries = Retrofit.Builder()
-        .baseUrl("https://api.kinopoisk.dev")
-        .client(httpClient)
-        .addConverterFactory(GsonConverterFactory.create())
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        .build()
-        .create(RetrofitServiceSeries::class.java)
-
 }

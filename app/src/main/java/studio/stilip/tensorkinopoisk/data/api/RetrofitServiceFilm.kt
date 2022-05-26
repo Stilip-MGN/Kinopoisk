@@ -17,5 +17,8 @@ interface RetrofitServiceFilm {
 
     @GET("/movie?token=${BuildConfig.API_TOKEN}&sortField=votes.imdb&sortType=-1&field=typeNumber&search=1&isStrict=false&field=name")
     fun getFilmsByName(@Query("search") search: String): Single<FilmsListResponse>
+
+    @GET("/movie?field=typeNumber&search=2&page=2&limit=10&sortField=votes.imdb&sortType=-1&token=${BuildConfig.API_TOKEN}")
+    fun getSeries(): Single<FilmsListResponse>
 }
 //ZQQ8GMN-TN54SGK-NB3MKEC-ZKB8V06 test
