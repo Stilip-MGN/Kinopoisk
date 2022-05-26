@@ -4,9 +4,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import moxy.InjectViewState
 import studio.stilip.tensorkinopoisk.base.BasePresenter
-import studio.stilip.tensorkinopoisk.domain.usecases.GetFilmInfoByIdUseCase
-import studio.stilip.tensorkinopoisk.domain.usecases.GetFilmsByNameUseCase
-import studio.stilip.tensorkinopoisk.domain.usecases.GetFilmsInfoUseCase
+import studio.stilip.tensorkinopoisk.domain.usecases.films.GetFilmsByNameUseCase
+import studio.stilip.tensorkinopoisk.domain.usecases.films.GetFilmsInfoUseCase
 import studio.stilip.tensorkinopoisk.views.FilmView
 import timber.log.Timber
 import javax.inject.Inject

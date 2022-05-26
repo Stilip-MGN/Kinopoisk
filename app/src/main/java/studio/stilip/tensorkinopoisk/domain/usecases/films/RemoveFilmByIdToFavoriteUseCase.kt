@@ -1,4 +1,4 @@
-package studio.stilip.tensorkinopoisk.domain.usecases
+package studio.stilip.tensorkinopoisk.domain.usecases.films
 
 import studio.stilip.tensorkinopoisk.domain.repositories_interface.MovieRepository
 import javax.inject.Inject
