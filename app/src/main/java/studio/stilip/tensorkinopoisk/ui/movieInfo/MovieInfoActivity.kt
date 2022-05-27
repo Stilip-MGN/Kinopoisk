@@ -1,8 +1,11 @@
 package studio.stilip.tensorkinopoisk.ui.movieInfo
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
@@ -11,7 +14,7 @@ import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
 import studio.stilip.tensorkinopoisk.App
 import studio.stilip.tensorkinopoisk.R
-import studio.stilip.tensorkinopoisk.databinding.ActivityFilmInfoBinding
+import studio.stilip.tensorkinopoisk.databinding.ActivityMovieInfoBinding
 import studio.stilip.tensorkinopoisk.domain.entities.MovieInfo
 import studio.stilip.tensorkinopoisk.presentation.MovieInfoPresenter
 import studio.stilip.tensorkinopoisk.views.FilmInfoView
@@ -25,8 +28,8 @@ class MovieInfoActivity : MvpAppCompatActivity(), FilmInfoView {
 
     private val filmPresenter: MovieInfoPresenter by moxyPresenter { presenterProvider.get() }
 
-    private val binding: ActivityFilmInfoBinding by lazy {
-        ActivityFilmInfoBinding.inflate(layoutInflater)
+    private val binding: ActivityMovieInfoBinding by lazy {
+        ActivityMovieInfoBinding.inflate(layoutInflater)
     }
 
     private lateinit var actorsAdapter: ActorsAdapter
@@ -34,6 +37,7 @@ class MovieInfoActivity : MvpAppCompatActivity(), FilmInfoView {
     private val filmId: String by lazy { intent.getStringExtra(EXTRA_FILM_ID)!! }
 
     private var isDescriptionOpen = false
+    private var isFavorite = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         App.appComponent.inject(this)
@@ -42,6 +46,7 @@ class MovieInfoActivity : MvpAppCompatActivity(), FilmInfoView {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         filmPresenter.getMovie(filmId)
+
         actorsAdapter = ActorsAdapter()
 
         with(binding) {
@@ -51,21 +56,10 @@ class MovieInfoActivity : MvpAppCompatActivity(), FilmInfoView {
                 adapter = actorsAdapter
             }
         }
-
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {
-                this.finish()
-                return true
-            }
-        }
-
-        return super.onOptionsItemSelected(item)
     }
 
     override fun showFilm(film: MovieInfo) {
+        supportActionBar?.title = film.name
         with(binding) {
             filmName.text = film.name
             rating.text = film.rating.toString()
@@ -81,6 +75,11 @@ class MovieInfoActivity : MvpAppCompatActivity(), FilmInfoView {
                     isDescriptionOpen = true
                     description.maxLines = 50
                 }
+            }
+
+            favorite.setOnClickListener {
+                isFavorite = isFavorite.not()
+                setIconFavorite()
             }
 
             Glide.with(poster.context)
@@ -111,6 +110,7 @@ class MovieInfoActivity : MvpAppCompatActivity(), FilmInfoView {
                 )
             }
         }
+        setIconFavorite()
     }
 
     override fun showError(message: String) {
@@ -119,6 +119,25 @@ class MovieInfoActivity : MvpAppCompatActivity(), FilmInfoView {
 
     override fun showSuccess(message: String) {
         TODO("Not yet implemented")
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                this.finish()
+                return true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun setIconFavorite() {
+        with(binding) {
+            if (isFavorite)
+                favorite.setImageResource(R.drawable.ic_baseline_favorite_24)
+            else favorite.setImageResource(R.drawable.ic_baseline_favorite_empty_24)
+        }
     }
 
     companion object {
