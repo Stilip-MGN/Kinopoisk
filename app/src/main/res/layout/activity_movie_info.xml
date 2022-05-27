@@ -23,10 +23,11 @@
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
         <TextView
-            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
             android:id="@+id/film_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="5dp"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="@dimen/title"
@@ -35,14 +36,18 @@
             app:layout_constraintTop_toBottomOf="@id/poster"
             tools:text="@tools:sample/lorem" />
 
+
         <TextView
             android:id="@+id/rating"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingVertical="5dp"
             android:text="@string/_8_8"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="20sp"
+            app:layout_constrainedWidth="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/film_name" />
@@ -52,10 +57,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:gravity="center"
             android:textColor="@color/white"
             android:textSize="@dimen/medium"
             app:layout_constrainedHeight="true"
-            app:layout_constraintEnd_toStartOf="@+id/genre"
+            app:layout_constraintEnd_toStartOf="@id/genre"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rating"
@@ -66,7 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-            android:layout_marginBottom="@dimen/margin_vertical"
+            android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="@dimen/medium"
             app:layout_constrainedHeight="true"
@@ -75,7 +81,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@id/year"
             app:layout_constraintTop_toBottomOf="@id/rating"
-            tools:text="@tools:sample/lorem" />
+            tools:text="@tools:sample/lorem[6]" />
 
         <TextView
             android:id="@+id/description_field"
@@ -94,10 +100,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-            android:textColor="@color/white"
-            android:textSize="@dimen/small"
             android:ellipsize="end"
             android:maxLines="4"
+            android:textColor="@color/white"
+            android:textSize="@dimen/small"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/description_field"
@@ -122,6 +128,21 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_vertical"
             app:layout_constraintTop_toBottomOf="@id/actors" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:clickable="true"
+            android:focusable="true"
+            app:backgroundTint="@color/kino_black"
+            app:borderWidth="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_favorite_empty_24"
+            app:tint="@android:color/white"
+            tools:ignore="ContentDescription" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
