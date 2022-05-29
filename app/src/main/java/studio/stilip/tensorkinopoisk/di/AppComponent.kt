@@ -7,7 +7,7 @@ import studio.stilip.tensorkinopoisk.ui.series.SeriesFragment
 import javax.inject.Singleton
 
 
-@Component(modules = [RepositoryModule::class, RetrofitModule::class])
+@Component(modules = [RepositoryModule::class, RetrofitModule::class, RoomModule::class])
 @Singleton
 interface AppComponent {
     fun inject(fragment: FilmsFragment)
