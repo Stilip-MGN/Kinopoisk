@@ -1,21 +1,18 @@
 package studio.stilip.tensorkinopoisk.data.entities
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+//@Entity(tableName = MovieResponse.TABLE_NAME)
 data class MovieResponse(
     val id: Int,
-    val externalId: ExternalId,
-    val type: String?,
     val name: String?,
     val alternativeName: String?,
     val description: String?,
     val year: Int?,
     val poster: Poster?,
     val rating: Rating?,
-    val votes: Votes?,
-)
-
-data class ExternalId(
-    val tmdb: Int,
-    val imdb: String
 )
 
 data class Poster(
@@ -27,12 +24,6 @@ data class Rating(
     val tmdb: Double,
     val kp: Double,
     val imdb: Double,
-)
-
-data class Votes(
-    val tmdb: Int,
-    val kp: Int,
-    val imdb: Int,
 )
 
 data class Genre(
