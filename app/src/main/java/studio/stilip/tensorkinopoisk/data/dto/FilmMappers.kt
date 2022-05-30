@@ -19,6 +19,7 @@ fun MovieResponse.toFilmDomain(): Film {
         rating = rating,
         title = this.name ?: this.alternativeName ?: "",
         poster = this.poster?.previewUrl ?: "",
+        length = "${this.movieLength} мин"
     )
 }
 
@@ -44,7 +45,8 @@ fun MovieInfoResponse.toDomain(): MovieInfo {
         poster = this.poster?.url ?: "",
         genre = this.genres?.map { genre -> genre.name } ?: listOf(),
         actors = this.persons?.map { person -> person.toDomain() } ?: listOf(),
-        description = this.description ?: ""
+        description = this.description ?: "",
+        length = "${this.movieLength} мин"
     )
 }
 
@@ -57,7 +59,8 @@ fun MovieInfo.toDB(): MovieForDB =
         poster = this.poster,
         rating = this.rating,
         genre = this.genre,
-        persons = this.actors
+        persons = this.actors,
+        length = this.length
     )
 
 fun MovieForDB.toFilm(): Film =
@@ -66,7 +69,8 @@ fun MovieForDB.toFilm(): Film =
         year = this.year,
         rating = this.rating,
         title = this.name,
-        poster = this.poster
+        poster = this.poster,
+        length = this.length
     )
 
 fun MovieForDB.toMovieInfo(): MovieInfo =
@@ -78,7 +82,8 @@ fun MovieForDB.toMovieInfo(): MovieInfo =
         poster = this.poster,
         actors = this.persons,
         description = this.description,
-        genre = this.genre
+        genre = this.genre,
+        length = this.length
     )
 
 

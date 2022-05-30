@@ -62,6 +62,7 @@ class MovieInfoActivity : MvpAppCompatActivity(), FilmInfoView {
             filmName.text = film.name
             rating.text = film.rating.toString()
             year.text = film.year.toString()
+            time.text = film.length
             genre.text = film.genre.joinToString(", ")
 
             description.text = film.description

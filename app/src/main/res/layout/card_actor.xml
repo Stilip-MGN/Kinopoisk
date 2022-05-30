@@ -19,7 +19,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:textColor="@color/white"
+        android:minLines="2"
+        android:maxLines="2"
+        android:textColor="@color/black"
         android:textSize="@dimen/medium"
         tools:text="@tools:sample/lorem[3]" />
 

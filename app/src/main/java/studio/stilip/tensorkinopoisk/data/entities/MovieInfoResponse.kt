@@ -5,6 +5,7 @@ data class MovieInfoResponse(
     val name: String?,
     val alternativeName: String?,
     val description: String?,
+    val movieLength: Int?,
     val year: Int?,
     val poster: Poster?,
     val rating: Rating?,

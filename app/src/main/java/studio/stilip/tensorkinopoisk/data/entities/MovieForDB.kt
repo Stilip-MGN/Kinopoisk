@@ -32,6 +32,9 @@ data class MovieForDB(
     @ColumnInfo(name = "movie_persons")
     val persons: List<Actor>,
 
+    @ColumnInfo(name = "movie_length")
+    val length: String,
+
     ) {
     companion object {
         const val TABLE_NAME = "favorite_movie"

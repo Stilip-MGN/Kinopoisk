@@ -30,6 +30,7 @@ class FilmsAdapter(private val clickListener: (String) -> Unit) :
             title.text = item.title
             year.text = if (item.year != 0) item.year.toString() else ""
             rating.text = item.rating.toString()
+            time.text = item.length
 
             when {
                 item.rating > 7 -> rating.setBackgroundColor(
