@@ -1,4 +1,4 @@
-package studio.stilip.tensorkinopoisk.domain.usecases
+package studio.stilip.tensorkinopoisk.domain.usecases.favorite
 
 import io.reactivex.Single
 import studio.stilip.tensorkinopoisk.domain.entities.MovieInfo

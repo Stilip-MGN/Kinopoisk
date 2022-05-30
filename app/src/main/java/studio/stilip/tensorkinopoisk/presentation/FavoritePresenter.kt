@@ -4,7 +4,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import moxy.InjectViewState
 import studio.stilip.tensorkinopoisk.base.BasePresenter
-import studio.stilip.tensorkinopoisk.domain.usecases.GetAllMoviesFromFavoriteUseCase
+import studio.stilip.tensorkinopoisk.domain.usecases.favorite.GetAllMoviesFromFavoriteUseCase
 import studio.stilip.tensorkinopoisk.views.FavoriteView
 import timber.log.Timber
 import javax.inject.Inject

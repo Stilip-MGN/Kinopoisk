@@ -5,10 +5,10 @@ import io.reactivex.schedulers.Schedulers
 import moxy.InjectViewState
 import studio.stilip.tensorkinopoisk.base.BasePresenter
 import studio.stilip.tensorkinopoisk.domain.entities.MovieInfo
-import studio.stilip.tensorkinopoisk.domain.usecases.DeleteMovieFromFavoriteUseCase
-import studio.stilip.tensorkinopoisk.domain.usecases.GetMovieByIdFromFavoriteUseCase
+import studio.stilip.tensorkinopoisk.domain.usecases.favorite.DeleteMovieFromFavoriteUseCase
+import studio.stilip.tensorkinopoisk.domain.usecases.favorite.GetMovieByIdFromFavoriteUseCase
 import studio.stilip.tensorkinopoisk.domain.usecases.SetMovieToFavoriteUseCase
-import studio.stilip.tensorkinopoisk.domain.usecases.films.GetFilmInfoByIdUseCase
+import studio.stilip.tensorkinopoisk.domain.usecases.GetFilmInfoByIdUseCase
 import studio.stilip.tensorkinopoisk.views.FilmInfoView
 import timber.log.Timber
 import javax.inject.Inject
