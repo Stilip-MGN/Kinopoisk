@@ -3,6 +3,7 @@ package studio.stilip.tensorkinopoisk.data.entities
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import studio.stilip.tensorkinopoisk.domain.entities.Actor
 
 @Entity(tableName = MovieForDB.TABLE_NAME)
 data class MovieForDB(
@@ -27,6 +28,9 @@ data class MovieForDB(
 
     @ColumnInfo(name = "movie_genre")
     val genre: List<String>,
+
+    @ColumnInfo(name = "movie_persons")
+    val persons: List<Actor>,
 
     ) {
     companion object {

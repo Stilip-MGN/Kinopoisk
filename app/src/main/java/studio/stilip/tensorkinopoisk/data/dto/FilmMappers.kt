@@ -56,7 +56,8 @@ fun MovieInfo.toDB(): MovieForDB =
         year = this.year,
         poster = this.poster,
         rating = this.rating,
-        genre = this.genre
+        genre = this.genre,
+        persons = this.actors
     )
 
 fun MovieForDB.toFilm(): Film =
@@ -75,7 +76,7 @@ fun MovieForDB.toMovieInfo(): MovieInfo =
         rating = this.rating,
         name = this.name,
         poster = this.poster,
-        actors = emptyList(),
+        actors = this.persons,
         description = this.description,
         genre = this.genre
     )
