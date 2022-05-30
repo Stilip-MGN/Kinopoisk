@@ -18,12 +18,13 @@ class MovieInfoPresenter @Inject constructor(
     private val getMovieById: GetFilmInfoByIdUseCase,
     private val setMovieToFavorite: SetMovieToFavoriteUseCase,
     private val deleteMovieFromFavorite: DeleteMovieFromFavoriteUseCase,
-    //private val getMovieByIdFromFavorite: GetMovieByIdFromFavoriteUseCase,
+    private val getMovieByIdFromFavorite: GetMovieByIdFromFavoriteUseCase,
 ) : BasePresenter<FilmInfoView>() {
 
     private lateinit var movie: MovieInfo
 
     fun getMovie(id: String) {
+        isMovieFavorite(id)
         getMovieById(id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -62,19 +63,18 @@ class MovieInfoPresenter @Inject constructor(
 
             }).disposeOnFinish()
     }
-/*
-    fun isMovieFavorite(id: String) {
+
+    private fun isMovieFavorite(id: String) {
         getMovieByIdFromFavorite(id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ film ->
                 movie = film
+                viewState.showIsFilmFavorite(true)
                 viewState.showFilm(movie)
-            }, { error ->
-                viewState.showError("Данные недоступны, повторите попытку позже")
-                Timber.e(error)
-
+            }, {
+                viewState.showIsFilmFavorite(false)
             }).disposeOnFinish()
     }
-*/
+
 }

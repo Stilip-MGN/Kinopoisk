@@ -80,12 +80,10 @@ class MovieInfoActivity : MvpAppCompatActivity(), FilmInfoView {
 
                 if (isFavorite) {
                     filmPresenter.addMovieToFavorite()
-                }
-                else {
+                } else {
                     filmPresenter.deleteMovieFromFavorite()
                 }
                 setIconFavorite()
-                //filmPresenter.isMovieFavorite(filmId)
             }
 
             Glide.with(poster.context)
@@ -119,6 +117,10 @@ class MovieInfoActivity : MvpAppCompatActivity(), FilmInfoView {
         setIconFavorite()
     }
 
+    override fun showIsFilmFavorite(isFavorite: Boolean) {
+        this.isFavorite = isFavorite
+    }
+
     override fun showError(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
@@ -142,8 +144,7 @@ class MovieInfoActivity : MvpAppCompatActivity(), FilmInfoView {
         with(binding) {
             if (isFavorite) {
                 favorite.setImageResource(R.drawable.ic_baseline_favorite_24)
-            }
-            else {
+            } else {
                 favorite.setImageResource(R.drawable.ic_baseline_favorite_empty_24)
             }
         }

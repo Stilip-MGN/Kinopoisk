@@ -8,4 +8,5 @@ import studio.stilip.tensorkinopoisk.domain.entities.MovieInfo
 @StateStrategyType(value = AddToEndSingleStrategy::class)
 interface FilmInfoView : BaseView {
     fun showFilm(film: MovieInfo)
+    fun showIsFilmFavorite(isFavorite:Boolean)
 }
