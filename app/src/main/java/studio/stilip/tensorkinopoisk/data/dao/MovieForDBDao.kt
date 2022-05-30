@@ -1,6 +1,7 @@
 package studio.stilip.tensorkinopoisk.data.dao
 
 import androidx.room.*
+import io.reactivex.Completable
 import io.reactivex.Single
 import studio.stilip.tensorkinopoisk.data.entities.MovieForDB
 
@@ -14,11 +15,11 @@ interface MovieForDBDao {
     fun getMovieById(id: String): Single<MovieForDB>
 
     @Delete
-    fun deleteMovie(movie: MovieForDB)
+    fun deleteMovie(movie: MovieForDB): Completable
 
     @Insert
-    fun insertMovie(movie: MovieForDB)
+    fun insertMovie(movie: MovieForDB): Completable
 
     @Update
-    fun updateMovie(movie: MovieForDB)
+    fun updateMovie(movie: MovieForDB): Completable
 }

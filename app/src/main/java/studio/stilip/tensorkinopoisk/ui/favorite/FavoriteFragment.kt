@@ -64,13 +64,18 @@ class FavoriteFragment : MvpAppCompatFragment(R.layout.fragment_favorite), Favor
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        favoritePresenter.getMovies()
+    }
+
     private companion object {
         @Dp
         const val EDUCATION_LIST_BOTTOM_PADDING = 30F
     }
 
-    override fun showFilms(list: List<Film>) {
-        TODO("Not yet implemented")
+    override fun showMovies(list: List<Film>) {
+        filmsAdapter.setList(list)
     }
 
     override fun showError(message: String) {
