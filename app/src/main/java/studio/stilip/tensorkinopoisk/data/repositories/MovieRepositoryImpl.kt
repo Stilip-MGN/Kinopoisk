@@ -2,6 +2,9 @@ package studio.stilip.tensorkinopoisk.data.repositories
 
 import io.reactivex.Single
 import studio.stilip.tensorkinopoisk.data.api.RetrofitServiceMovie
+import studio.stilip.tensorkinopoisk.data.dao.MovieForDBDao
+import studio.stilip.tensorkinopoisk.data.database.MovieDatabase
+import studio.stilip.tensorkinopoisk.data.dto.toDB
 import studio.stilip.tensorkinopoisk.data.dto.toDomain
 import studio.stilip.tensorkinopoisk.data.dto.toFilmDomain
 import studio.stilip.tensorkinopoisk.domain.entities.films.Film
@@ -9,7 +12,10 @@ import studio.stilip.tensorkinopoisk.domain.entities.MovieInfo
 import studio.stilip.tensorkinopoisk.domain.repositories_interface.MovieRepository
 import javax.inject.Inject
 
-class MovieRepositoryImpl @Inject constructor(private val retrofitService: RetrofitServiceMovie) :
+class MovieRepositoryImpl @Inject constructor(
+    private val retrofitService: RetrofitServiceMovie,
+    private val movieDao: MovieForDBDao
+    ) :
     MovieRepository {
 
     override fun getFilmsInfo(): Single<List<Film>> {
@@ -53,5 +59,9 @@ class MovieRepositoryImpl @Inject constructor(private val retrofitService: Retro
             .map { list ->
                 list.docs.map { m -> m.toFilmDomain() }
             }
+    }
+
+    override fun setMovieToDB(movie: MovieInfo) {
+        movieDao.insertMovie(movie.toDB())
     }
 }

@@ -1,5 +1,7 @@
 package studio.stilip.tensorkinopoisk.di
 
+import android.content.Context
+import dagger.BindsInstance
 import dagger.Component
 import studio.stilip.tensorkinopoisk.ui.favorite.FavoriteFragment
 import studio.stilip.tensorkinopoisk.ui.films.FilmsFragment
@@ -15,4 +17,9 @@ interface AppComponent {
     fun inject(fragment: FavoriteFragment)
     fun inject(fragment: SeriesFragment)
     fun inject(activity: MovieInfoActivity)
+
+    @Component.Factory
+    interface Factory {
+        fun create(@BindsInstance context: Context): AppComponent
+    }
 }

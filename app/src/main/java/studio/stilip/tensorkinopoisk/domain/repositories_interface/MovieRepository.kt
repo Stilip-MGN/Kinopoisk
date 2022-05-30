@@ -18,4 +18,6 @@ interface MovieRepository {
     fun getSeriesInfo(): Single<List<Film>>
 
     fun getSeriesByName(name: String): Single<List<Film>>
+
+    fun setMovieToDB(movie: MovieInfo)
 }

@@ -25,6 +25,7 @@ android {
         debug {
             buildConfigField "String", "API_TOKEN", "\"CK8P20A-T6N4XPV-JSD67GF-6NKR399\""
             buildConfigField "String", "DB_NAME", "\"TensorKp-db\""
+            buildConfigField "String", "DB_NAME_MOVIE", "\"Tensor-Movie-db\""
         }
         release {
             minifyEnabled false
