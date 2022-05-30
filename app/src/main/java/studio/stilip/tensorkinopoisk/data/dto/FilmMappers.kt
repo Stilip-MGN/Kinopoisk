@@ -51,11 +51,12 @@ fun MovieInfoResponse.toDomain(): MovieInfo {
 fun MovieInfo.toDB(): MovieForDB =
     MovieForDB(
         id = this.id,
-        name = name,
-        description = description,
-        year = year,
-        poster = poster,
-        rating = rating
+        name = this.name,
+        description = this.description,
+        year = this.year,
+        poster = this.poster,
+        rating = this.rating,
+        genre = this.genre
     )
 
 fun MovieForDB.toFilm(): Film =
@@ -76,7 +77,7 @@ fun MovieForDB.toMovieInfo(): MovieInfo =
         poster = this.poster,
         actors = emptyList(),
         description = this.description,
-        genre = emptyList()
+        genre = this.genre
     )
 
 

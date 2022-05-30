@@ -25,9 +25,11 @@ data class MovieForDB(
     @ColumnInfo(name = "movie_rating")
     val rating: Double,
 
+    @ColumnInfo(name = "movie_genre")
+    val genre: List<String>,
 
-        ){
-    companion object{
+    ) {
+    companion object {
         const val TABLE_NAME = "favorite_movie"
     }
 }
