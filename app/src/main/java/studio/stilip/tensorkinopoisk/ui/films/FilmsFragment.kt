@@ -14,6 +14,7 @@ import studio.stilip.tensorkinopoisk.R
 import studio.stilip.tensorkinopoisk.databinding.FragmentFilmsBinding
 import studio.stilip.tensorkinopoisk.domain.entities.films.Film
 import studio.stilip.tensorkinopoisk.presentation.FilmsPresenter
+import studio.stilip.tensorkinopoisk.ui.FilmsAdapter
 import studio.stilip.tensorkinopoisk.ui.movieInfo.MovieInfoActivity
 import studio.stilip.tensorkinopoisk.views.FilmView
 import timber.log.Timber
@@ -28,7 +29,7 @@ class FilmsFragment : MvpAppCompatFragment(R.layout.fragment_films), FilmView {
     @Inject
     lateinit var presenterProvider: Provider<FilmsPresenter>
 
-    val filmsPresenter: FilmsPresenter by moxyPresenter { presenterProvider.get() }
+    private val filmsPresenter: FilmsPresenter by moxyPresenter { presenterProvider.get() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         App.appComponent.inject(this)
@@ -73,7 +74,6 @@ class FilmsFragment : MvpAppCompatFragment(R.layout.fragment_films), FilmView {
                     filmsPresenter.getFilms()
             }
         }
-
 
     }
 

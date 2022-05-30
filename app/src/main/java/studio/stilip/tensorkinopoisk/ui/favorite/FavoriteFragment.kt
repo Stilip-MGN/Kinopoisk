@@ -13,7 +13,7 @@ import studio.stilip.tensorkinopoisk.R
 import studio.stilip.tensorkinopoisk.databinding.FragmentFavoriteBinding
 import studio.stilip.tensorkinopoisk.domain.entities.films.Film
 import studio.stilip.tensorkinopoisk.presentation.FavoritePresenter
-import studio.stilip.tensorkinopoisk.ui.films.FilmsAdapter
+import studio.stilip.tensorkinopoisk.ui.FilmsAdapter
 import studio.stilip.tensorkinopoisk.ui.movieInfo.MovieInfoActivity
 import studio.stilip.tensorkinopoisk.views.FavoriteView
 import javax.inject.Inject
