@@ -1,12 +1,10 @@
 package studio.stilip.tensorkinopoisk.ui.movieInfo
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
@@ -64,6 +62,7 @@ class MovieInfoActivity : MvpAppCompatActivity(), FilmInfoView {
             filmName.text = film.name
             rating.text = film.rating.toString()
             year.text = film.year.toString()
+            time.text = film.length
             genre.text = film.genre.joinToString(", ")
 
             description.text = film.description
@@ -79,6 +78,12 @@ class MovieInfoActivity : MvpAppCompatActivity(), FilmInfoView {
 
             favorite.setOnClickListener {
                 isFavorite = isFavorite.not()
+
+                if (isFavorite) {
+                    filmPresenter.addMovieToFavorite()
+                } else {
+                    filmPresenter.deleteMovieFromFavorite()
+                }
                 setIconFavorite()
             }
 
@@ -113,12 +118,16 @@ class MovieInfoActivity : MvpAppCompatActivity(), FilmInfoView {
         setIconFavorite()
     }
 
+    override fun showIsFilmFavorite(isFavorite: Boolean) {
+        this.isFavorite = isFavorite
+    }
+
     override fun showError(message: String) {
-        TODO("Not yet implemented")
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun showSuccess(message: String) {
-        TODO("Not yet implemented")
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
 
@@ -134,9 +143,11 @@ class MovieInfoActivity : MvpAppCompatActivity(), FilmInfoView {
 
     private fun setIconFavorite() {
         with(binding) {
-            if (isFavorite)
+            if (isFavorite) {
                 favorite.setImageResource(R.drawable.ic_baseline_favorite_24)
-            else favorite.setImageResource(R.drawable.ic_baseline_favorite_empty_24)
+            } else {
+                favorite.setImageResource(R.drawable.ic_baseline_favorite_empty_24)
+            }
         }
     }
 

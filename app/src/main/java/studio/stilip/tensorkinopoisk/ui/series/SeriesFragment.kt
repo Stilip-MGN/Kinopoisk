@@ -14,6 +14,7 @@ import studio.stilip.tensorkinopoisk.R
 import studio.stilip.tensorkinopoisk.databinding.FragmentSeriesBinding
 import studio.stilip.tensorkinopoisk.domain.entities.films.Film
 import studio.stilip.tensorkinopoisk.presentation.SeriesPresenter
+import studio.stilip.tensorkinopoisk.ui.FilmsAdapter
 import studio.stilip.tensorkinopoisk.ui.movieInfo.MovieInfoActivity
 import studio.stilip.tensorkinopoisk.views.SeriesView
 import timber.log.Timber
@@ -23,7 +24,7 @@ import javax.inject.Provider
 class SeriesFragment : MvpAppCompatFragment(R.layout.fragment_series), SeriesView {
 
     private lateinit var binding: FragmentSeriesBinding
-    private lateinit var seriesAdapter: SeriesAdapter
+    private lateinit var seriesAdapter: FilmsAdapter
 
     @Inject
     lateinit var presenterProvider: Provider<SeriesPresenter>
@@ -38,7 +39,7 @@ class SeriesFragment : MvpAppCompatFragment(R.layout.fragment_series), SeriesVie
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding = FragmentSeriesBinding.bind(view)
 
-        seriesAdapter = SeriesAdapter{ id ->
+        seriesAdapter = FilmsAdapter{ id ->
             startActivity(
                 MovieInfoActivity.createIntent(
                     requireContext(),

@@ -1,4 +1,4 @@
-package studio.stilip.tensorkinopoisk.ui.series
+package studio.stilip.tensorkinopoisk.ui
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -10,9 +10,9 @@ import studio.stilip.tensorkinopoisk.R
 import studio.stilip.tensorkinopoisk.databinding.CardFilmBinding
 import studio.stilip.tensorkinopoisk.domain.entities.films.Film
 
-class SeriesAdapter(private val clickListener: (String) -> Unit) :
-    RecyclerView.Adapter<SeriesAdapter.FilmsHolder>() {
-    private var series: List<Film> = emptyList()
+class FilmsAdapter(private val clickListener: (String) -> Unit) :
+    RecyclerView.Adapter<FilmsAdapter.FilmsHolder>() {
+    private var films: List<Film> = emptyList()
 
     class FilmsHolder(val viewBinding: CardFilmBinding) :
         RecyclerView.ViewHolder(viewBinding.root)
@@ -24,12 +24,13 @@ class SeriesAdapter(private val clickListener: (String) -> Unit) :
     }
 
     override fun onBindViewHolder(holder: FilmsHolder, position: Int) {
-        val item = series[position]
+        val item = films[position]
 
         with(holder.viewBinding) {
             title.text = item.title
             year.text = if (item.year != 0) item.year.toString() else ""
             rating.text = item.rating.toString()
+            time.text = item.length
 
             when {
                 item.rating > 7 -> rating.setBackgroundColor(
@@ -65,12 +66,12 @@ class SeriesAdapter(private val clickListener: (String) -> Unit) :
     }
 
     override fun getItemCount(): Int {
-        return series.size
+        return films.size
     }
 
     @SuppressLint("NotifyDataSetChanged")
     fun setList(list: List<Film>) {
-        series = list
+        films = list
         notifyDataSetChanged()
     }
 

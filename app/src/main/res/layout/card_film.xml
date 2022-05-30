@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="5dp"
-    android:layout_marginVertical="5dp"
-    android:orientation="vertical">
+    android:layout_marginVertical="5dp">
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        app:cardCornerRadius="20dp">
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/poster"
@@ -49,16 +52,34 @@
         android:maxLines="2"
         android:requiresFadingEdge="vertical"
         android:textSize="@dimen/header"
+        app:layout_constraintEnd_toEndOf="@id/materialCardView"
+        app:layout_constraintStart_toStartOf="@+id/materialCardView"
+        app:layout_constraintTop_toBottomOf="@id/materialCardView"
         tools:text="@tools:sample/lorem[12]" />
+
 
     <TextView
         android:id="@+id/year"
-        android:layout_width="160dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginHorizontal="2dp"
         android:maxLines="2"
         android:textSize="@dimen/medium"
-        tools:text="@tools:sample/full_names" />
+        app:layout_constraintStart_toStartOf="@id/materialCardView"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        tools:text="@tools:sample/lorem[0]" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginHorizontal="2dp"
+        android:maxLines="2"
+        android:textSize="@dimen/medium"
+        app:layout_constraintEnd_toEndOf="@id/materialCardView"
+        app:layout_constraintTop_toTopOf="@id/year"
+        tools:text="@tools:sample/lorem[0]" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

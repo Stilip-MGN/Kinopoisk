@@ -14,10 +14,12 @@
         android:theme="@style/Theme.TensorKinopoisk">
         <activity
             android:name="studio.stilip.tensorkinopoisk.ui.movieInfo.MovieInfoActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

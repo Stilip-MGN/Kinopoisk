@@ -1,14 +1,11 @@
 package studio.stilip.tensorkinopoisk.data.entities
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 
-//@Entity(tableName = MovieResponse.TABLE_NAME)
 data class MovieResponse(
     val id: Int,
     val name: String?,
     val alternativeName: String?,
+    val movieLength: Int?,
     val description: String?,
     val year: Int?,
     val poster: Poster?,
